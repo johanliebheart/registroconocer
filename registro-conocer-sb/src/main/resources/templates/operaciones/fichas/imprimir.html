@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title></title>
+</head>
+<body>
+<!-- style="width: 1237px;
+    height:956px; -->
+
+	 <img src="/img/ficharegistro.jpg" style="width: 1237px;
+    height:956px;
+    padding:5px 0px 0px 0px;
+	position:relative;
+    overflow:hidden;"><br>
+   
+ <span style="font-weight: bold; font-size: 18pt; color: #FF0000; font-family: Times"><br></span> 
+  
+    <!-- <table style="position: absolute; border: none; left: http://localhost:8080/RegistroConocer/resources/img/ficharegistro.jpgx;  width: 20%;margin: auto padding-top: 1px; overflow: hidden; text-align: left; font-weight: bold;"><tr><td style="width: 100%">  </td></tr></table><br /> -->
+	
+	<table style="position: absolute; border: none; left: 300px; top: 105px;  width: 15%;margin: auto padding-top: 1px; overflow: hidden; text-align: left; font-weight: bold;"><tr><td style="width: 100%"><a th:text="${fichaRegistro.idClaveEstandar.clave} +' '+ ${fichaRegistro.idClaveEstandar.nombre}"></a> </td></tr></table>
+	
+    <table style="position: absolute; border: none; left: 845px; top: 130px;  width: 43%;margin: auto padding-top: 1px; overflow: hidden; text-align: left; font-weight: bold;"><tr><td style="width: 100%"> <a th:text="${fichaRegistro.fechaRegistro}"></a></td></tr></table>
+    
+    <table style="position: absolute; border: none; left: 650px; top: 310px;  width: 25%;margin: auto padding-top: 1px; overflow: hidden; text-align: left; font-weight: bold;"><tr><td style="width: 100%"> <a th:text="${fichaRegistro.candidato.nombre}+ ' ' + ${fichaRegistro.candidato.apellidoP} +' '+ ${fichaRegistro.candidato.apellidoM} "></a>   </td></tr></table>
+   
+    <!-- AQUÍ VA LA FOTO -->
+    <table style="position: absolute; border: none; left: 325px; top: 301px;  width: 43%;margin: auto padding-top: 1px; overflow: hidden; text-align: left; font-weight: bold;"><tr><td style="width: 100%">  <img alt="uno" th:src="@{'/uploads/' + ${fichaRegistro.candidato.imageReference}}" style="width: 123px; height: 147px;"></td></tr></table>
+    
+    <!-- <table style="position: absolute; border: none; left: 325px; top: 305px;  width: 10%;margin: auto padding-top: 1px; overflow: hidden; text-align: left; font-weight: bold;"><tr><td style="width: 100%"> <img height="115px" width="115px" src="resources/uploads/photo.jpg"></td></tr></table> -->
+    
+    
+    <table style="position: absolute; border: none; left: 650px; top: 335px;  width: 20%;margin: auto padding-top: 1px; overflow: hidden; text-align: left; font-weight: bold;"><tr><td style="width: 100%"><a th:text=" ${fichaRegistro.candidato.lugarNacimiento}"></a></td></tr></table><br />
+	
+     <table style="position: absolute; border: none; left: 650px; top: 360px;  width: 20%;margin: auto padding-top: 1px; overflow: hidden; text-align: left; font-weight: bold;"><tr><td style="width: 100%"> <a th:text="${fichaRegistro.candidato.nacionalidad}"></a> </td></tr></table><br />
+	
+	<table style="position: absolute; border: none; left: 650px; top: 382px;  width: 20%;margin: auto padding-top: 1px; overflow: hidden; text-align: left; font-weight: bold;"><tr><td style="width: 100%"> <a th:text=" ${fichaRegistro.candidato.curp}"></a></td></tr></table><br />
+	
+   	<table style="position: absolute; border: none; left: 650px; top: 407px;  width: 20%;margin: auto padding-top: 1px; overflow: hidden; text-align: left; font-weight: bold;"><tr><td style="width: 100%"> <a th:text=" ${fichaRegistro.candidato.genero}"></a></td></tr></table><br />
+    
+    <table style="position: absolute; border: none; left: 1025px; top: 407px;  width: 20%;margin: auto padding-top: 1px; overflow: hidden; text-align: left; font-weight: bold;"><tr><td style="width: 100%"> <a th:text=" ${fichaRegistro.candidato.fechaNacimiento}"></a></td></tr></table><br />
+    
+    <table style="position: absolute; border: none; left: 330px; top: 455px;  width: 50%;margin: auto padding-top: 1px; overflow: hidden; text-align: left; font-weight: bold;"><tr><td style="width: 100%"> <a th:text=" ${fichaRegistro.candidato.domicilio}"></a> </td></tr></table><br />
+    
+    <table style="position: absolute; border: none; left: 380px; top: 565px;  width: 20%;margin: auto padding-top: 1px; overflow: hidden; text-align: left; font-weight: bold;"><tr><td style="width: 100%">  <a th:text="${fichaRegistro.candidato.email}"></a></td></tr></table><br />
+    
+    <table style="position: absolute; border: none; left: 680px; top: 565px;  width: 20%;margin: auto padding-top: 1px; overflow: hidden; text-align: left; font-weight: bold;"><tr><td style="width: 100%"> <a th:text=" ${fichaRegistro.candidato.telefono}"></a></td></tr></table><br />
+    
+    <table style="position: absolute; border: none; left: 950px; top: 565px;  width: 20%;margin: auto padding-top: 1px; overflow: hidden; text-align: left; font-weight: bold;"><tr><td style="width: 100%">  <a th:text="${fichaRegistro.candidato.telefonoCel}"></a> </td></tr></table><br />
+    
+    <table style="position: absolute; border: none; left: 83px; top: 305px;  width: 20%;margin: auto padding-top: 1px; overflow: hidden; text-align: left; font-weight: bold;"><tr><td style="width: 100%">  <a th:if="${fichaRegistro.aceptacion}"  th:text="X"></a></td></tr></table><br />
+	
+	<table style="position: absolute; border: none; left: 145px; top: 305px;  width: 20%;margin: auto padding-top: 1px; overflow: hidden; text-align: left; font-weight: bold;"><tr><td style="width: 100%">  <a th:if="${not fichaRegistro.aceptacion}"  th:text="X"></a></td></tr></table><br />
+</body>
+</html>

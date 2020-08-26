@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body class="hold-transition sidebar-mini">
+
+	<header th:replace="layout/layout ::header"></header>
+	<aside th:replace="layout/layout ::aside"></aside>
+	<div class="content-wrapper">
+	   <section th:replace="layout/layout ::section1"></section>
+	
+		    <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Lista de lotes de dictamen</h3>
+				
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+              <i class="fas fa-minus"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+              <i class="fas fa-times"></i></button>
+          </div>
+          <h4 class="card-titule">
+					<a href="nuevoLote" class="btn btn-primary btn-xl float-right">Nuevo lote</a>
+		</h4>
+        </div>
+        <div class="card-body">
+					<table id="example1" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Folio lote </th>
+								<th>Fecha de captura</th>
+								<th>Fecha de dictamen</th>
+						
+								<th>Número de fichas</th>
+								<th>Procedente</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="var: ${listaLotes}">
+							<td><a class="btn btn-primary" th:href="@{/lote/nuevoLote/}+ ${var.idLoteDictamen} " th:text="${var.idLoteDictamen}"></a></td>			
+								<td th:text="${var.fechaCaptura}"></td>
+								<td th:text="${var.fechaDictamen}">3</td>
+							
+								<td th:text="${var.numeroFichas}">5</td>
+								<td th:text="${var.procedente} ? 'Si':'No'">6</td>
+						</tbody>
+						<tfoot>
+							<tr>
+								<th>Folio lote</th>
+								<th>Fecha de captura</th>
+								<th>Fecha de dictamen</th>
+						
+								<th>Número de fichas</th>
+								<th>Procedente</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+        <h4 class="card-titule">
+					<a href="nuevoLote" class="btn btn-primary btn-xl float-right">Nuevo lote</a>
+		</h4>
+          Footer
+        </div>
+        <!-- /.card-footer-->
+      </div>
+      <!-- /.card -->
+
+    </section>
+	
+	
+	</div>
+	<footer th:replace="layout/layout ::footer">
+	
+	</footer>
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+<section th:replace="layout/layout ::section2"></section>
+</body>
+</html>	

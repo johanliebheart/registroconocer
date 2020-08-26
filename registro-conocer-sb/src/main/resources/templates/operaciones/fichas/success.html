@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body class="hold-transition sidebar-mini">
+
+	<header th:replace="layout/layout ::header"></header>
+	<aside th:replace="layout/layout ::aside"></aside>
+	<div class="content-wrapper">
+	   <section th:replace="layout/layout ::section1"></section>
+	
+		    <section class="content">
+		
+	
+        
+        
+        <div class="card-body">
+        
+         	<div class="container py-4">
+         	         		
+         		<div class="card bg-light">
+			<div class="card-header" th:text="'Detalles'"></div>
+			<div class="card-body">
+
+
+				<img th:if="${#strings.length(fichaRegistro.candidato.imageReference) > 0}"
+					class="img-thumbnail rounded float-left" style="max-width: 25%;"
+					th:src="@{'/uploads/' + ${fichaRegistro.candidato.imageReference}}" th:alt="${fichaRegistro.candidato.imageReference}">
+
+				<ul  class="list-group list-group-flush" >
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.nombre} +' '+${fichaRegistro.candidato.apellidoP}+' '+ ${fichaRegistro.candidato.apellidoM}"></li>					
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.nacionalidad}"></li>
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.lugarNacimiento}"></li>
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.email}"></li>
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.genero}"></li>
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.curp}"></li>
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.fechaNacimiento}"></li>
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.domicilio}"></li>
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.telefono}"></li>
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.telefonoCel}"></li>
+					
+				</ul>
+
+				
+         		<h4 >
+					<a th:href="@{fichaRegistro/} + ${fichaRegistro.idFichaRegistro}" class="btn btn-primary ">Editar</a>
+					<a th:href="@{imprimir/} + ${fichaRegistro.idFichaRegistro}" target="_blank" class="btn btn-success">Imprimir</a>
+				</h4>
+			
+					
+			
+         	</div>
+         
+         	
+         	
+         	</div>
+         	
+         	
+         	</div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+          
+        </div>
+        <!-- /.card-footer-->
+   
+      <!-- /.card -->
+
+    </section>
+	
+	
+	</div>
+	<footer th:replace="layout/layout ::footer"></footer>
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+<section th:replace="layout/layout ::section2"></section>
+</body>
+</html>
