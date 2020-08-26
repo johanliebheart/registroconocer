@@ -116,9 +116,13 @@ public class Proceso implements Serializable {
 		this.loteDictamen = loteDictamen;
 	}
 
+	@Override
+	public String toString() {
+		return "Proceso [idProceso=" + idProceso + ", idFichaRegistro=" + idFichaRegistro + ", dictamen=" + dictamen
+				+ ", juicio=" + juicio + ", fechaEnvioDictamen=" + fechaEnvioDictamen + ", estado=" + estado
+				+ ", certificado=" + certificado + ", loteDictamen=" + loteDictamen + "]";
+	}
 
-
-	
 
 	
 }

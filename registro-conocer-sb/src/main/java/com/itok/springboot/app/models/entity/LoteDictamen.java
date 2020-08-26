@@ -6,8 +6,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
@@ -22,10 +20,7 @@ public class LoteDictamen implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idLoteDictamen;
-	
-	private String folio;
 	
 	private int numeroFichas;
 	
@@ -43,11 +38,12 @@ public class LoteDictamen implements Serializable{
 	@OneToMany(mappedBy = "loteDictamen", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Proceso> proceso;
 
-	@PrePersist
+	@PrePersist()
 	public void setFechaCaptura() {
 		fechaCaptura = new Date();
 	}
 	
+
 	public int getIdLoteDictamen() {
 		return idLoteDictamen;
 	}
@@ -56,13 +52,6 @@ public class LoteDictamen implements Serializable{
 		this.idLoteDictamen = idLoteDictamen;
 	}
 
-	public String getFolio() {
-		return folio;
-	}
-
-	public void setFolio(String folio) {
-		this.folio = folio;
-	}
 
 	public int getNumeroFichas() {
 		return numeroFichas;

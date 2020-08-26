@@ -114,7 +114,8 @@ public class ProcesoController {
 	
 	@PostMapping(value = "asignarDictamen")
 	public String asignarDictamen(Proceso proceso, Model model, RedirectAttributes flash) {
-		System.out.println("proceso recibido: " + proceso.toString());
+	
+		proceso.setEstado(0);
 		procesoService.save(proceso);
 		flash.addFlashAttribute("success", "Juicio asignado con éxito");
 		return "redirect:/procesos/listaActivos";
