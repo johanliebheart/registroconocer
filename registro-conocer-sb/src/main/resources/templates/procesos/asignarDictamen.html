@@ -109,12 +109,12 @@
 											<!-- Seleccionar evaluador independiente -->
 											<div class="col-sm-4">
 												<div class="form-group">
-													<label>Selecciona el Evaluador Independiente</label> <select
-														th:field="*{idEvaluadorIndependiente}"
+													<label>Selecciona el Lote de Dictamen	</label> <select
+														th:field="*{idLoteDictamen.idLoteDictamen}"
 														class="form-control select2" style="width: 100%;">
-														<option th:each="variable : ${listaEI}"
-															th:text="${variable.nombre}"
-															th:value="${variable.idEvaluadorIndependiente}"></option>
+														<option th:each="variable : ${listaLotes}"
+															th:text="${variable.idLoteDictamen}"
+															th:value="${variable.idLoteDictamen}"></option>
 													</select>
 												</div>
 											</div>

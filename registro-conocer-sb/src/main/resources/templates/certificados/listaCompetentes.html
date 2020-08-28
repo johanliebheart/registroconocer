@@ -13,7 +13,7 @@
 			<!-- Default box -->
 			<div class="card">
 				<div class="card-header">
-					<h3 class="card-title">Reporte de procesos activos e inactivos</h3>
+					<h3 class="card-title">Reporte de procesos con juicio competente</h3>
 
 					<div class="card-tools">
 						<button type="button" class="btn btn-tool"
@@ -37,23 +37,24 @@
 								<th>Estandar</th>
 								<th>Fecha de registro</th>
 								<th>Juicio</th>
-								<th>Fecha de Juicio</th>
 								<th>Fecha envío a dictamen</th>
-								<th>Folio de Dictamen</th>
-								
+								<th>Lote de Dictamen</th>
+								<th>Dictamen</th>
+								<th>Certificado</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="var: ${listaProcesos}">
+							<tr th:each="var: ${listaCompetentes}">
 								<td th:text="${var.idFichaRegistro.candidato.nombre} + ' ' + ${var.idFichaRegistro.candidato.apellidoP} +' '+ ${var.idFichaRegistro.candidato.apellidoM} "></td>
 								<td th:text="${var.idFichaRegistro.idEvaluadorIndependiente.nombre}">2</td>
 								<td th:text="${var.idFichaRegistro.idClaveEstandar.clave} +' - '+ ${var.idFichaRegistro.idClaveEstandar.nombre}">3</td>
 								<td th:text="${var.idFichaRegistro.fechaRegistro}">4</td>
 								<td th:text="${var.juicio}">5</td>
-								<td th:text="${var.fechaJuicio}"></td>
 								<td th:text="${var.fechaEnvioDictamen}"></td>
-								<td th:text="${var.idProceso}">7</td>
-								<!--  <td th:text="${var.estado} ? 'Activo':'Inactivo'">8</td>-->
+								<td th:text="${var.idLoteDictamen.idLoteDictamen} ? ${var.idLoteDictamen.idLoteDictamen} : 'no asignado'">7</td>							
+								<td th:text="${var.dictamen}">7</td>
+								<td><a class="btn btn-success" th:href="@{/certificados/nuevo/} + ${var.idProceso} " th:text="Añadir"></a></td>
+
 							</tr>
 
 						</tbody>
@@ -64,10 +65,11 @@
 								<th>Estandar</th>
 								<th>Fecha de registro</th>
 								<th>Juicio</th>
-								<th>Fecha de Juicio</th>
 								<th>Fecha envío a dictamen</th>
-								<th>Folio de Dictamen</th>
-								
+								<th>Lote de Dictamen</th>
+								<th>Dictamen</th>
+								<th>Certificado</th>
+							</tr>
 						</tfoot>
 					</table>
 				</div>

@@ -39,6 +39,11 @@ public class Proceso implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechaEnvioDictamen;
 	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date fechaJuicio;
+	
+	
 	private int estado;
 	
 	private boolean certificado;
@@ -116,8 +121,13 @@ public class Proceso implements Serializable {
 		this.idLoteDictamen = idLoteDictamen;
 	}
 
+	public Date getFechaJuicio() {
+		return fechaJuicio;
+	}
 
-	
+	public void setFechaJuicio(Date fechaJuicio) {
+		this.fechaJuicio = fechaJuicio;
+	}
 
-	
+
 }

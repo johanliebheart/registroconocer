@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.itok.springboot.app.models.service.ICertificadosService;
 import com.itok.springboot.app.models.service.IEvaluadorIndependienteService;
 import com.itok.springboot.app.models.service.IFichaRegistroService;
+import com.itok.springboot.app.models.service.ILoteDictamenService;
 import com.itok.springboot.app.models.service.IProcesoService;
 
 @Controller
@@ -19,6 +21,11 @@ public class ReporteController {
 	private IEvaluadorIndependienteService evaluadoreIndependienteService;
 	@Autowired
 	private IProcesoService procesoService;
+	@Autowired
+	private ILoteDictamenService loteDictamenService;
+	@Autowired
+	private ICertificadosService certificadosService;
+
 
 	@GetMapping(value = "/reporteFichas")
 	public String reporteFichas(Model model) {
@@ -40,5 +47,18 @@ public class ReporteController {
 		model.addAttribute("listaProcesos", procesoService.findAll());
 		return "reportes/reporteProcesos";
 	}
+	
+	@GetMapping(value="/reporteLotesDictamen")
+	public String reporteLotesDictamen(Model model) {
+		model.addAttribute("titulo", "Reporte de Lotes de Dictamen");
+		model.addAttribute("listaLotesDictamen", loteDictamenService.findAll());
+		return "reportes/reporteLotesDictamen";
+	}
 
+	@GetMapping(value="/reporteCertificados")
+	public String reporteCertificados(Model model) {
+		model.addAttribute("titulo", "Reporte de Folios de Certificados");
+		model.addAttribute("listaCertificados", certificadosService.findAll());
+		return "reportes/reporteCertificados";	
+		}
 }

@@ -11,6 +11,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "certificados")
@@ -26,10 +29,15 @@ public class Certificados implements Serializable {
 	@JoinColumn(name = "id_proceso", nullable = false)
 	private Proceso idProceso;
 	
+	@NotNull
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fecha;
 	
-	private String vigencia;
+	@NotNull
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date vigencia;
 	
 	private boolean impresionCert;
 	
@@ -77,12 +85,14 @@ public class Certificados implements Serializable {
 	}
 
 
-	public String getVigencia() {
+	
+
+	public Date getVigencia() {
 		return vigencia;
 	}
 
 
-	public void setVigencia(String vigencia) {
+	public void setVigencia(Date vigencia) {
 		this.vigencia = vigencia;
 	}
 

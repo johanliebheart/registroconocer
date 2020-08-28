@@ -52,5 +52,10 @@ public class ProcesoServiceImpl implements IProcesoService {
 		return (List<Proceso>) procesoDao.findByActivo();
 	}
 
+	@Override
+	public List<Proceso> findByCompetente() {
+		return (List<Proceso>) procesoDao.findByCompetente();
+	}
+
 	
 }

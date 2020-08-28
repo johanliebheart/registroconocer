@@ -18,4 +18,8 @@ public interface IProcesoService {
 	public void delete(int id);
 
 	public List<Proceso> findByActivo();
+	
+	public List<Proceso> findByCompetente();
+	
+	
 }
