@@ -19,14 +19,13 @@
 						</div>
 						<!-- /.card-header -->
 						<!-- form start -->
-						<form th:action="@{/lote/guardarLote}" th:object="${lote}" method="post">
+						<form th:action="@{/lote/guardarLote}" th:object="${loteDictamen}" method="post">
 							<div class="card-body">
 								<div class="row">
 									<div class="col-sm-6">
 										
-										
-										<div class="form-group">
-											<label>Folio</label>
+										<div class="form-group "  >
+											<label>ID</label>
 											<div class="input-group-prepend">
 
 												<input type="text" class="form-control" th:field="*{idLoteDictamen}"
@@ -34,6 +33,7 @@
 													required="required">
 											</div>
 										</div>
+										
 									</div>
 
 									<div class="col-sm-6">
@@ -60,8 +60,6 @@
 											</div>
 										</div>
 									</div>
-									
-								
 
 
 									<div class="col-sm-6">

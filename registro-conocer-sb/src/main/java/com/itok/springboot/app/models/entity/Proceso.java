@@ -14,7 +14,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -45,8 +44,9 @@ public class Proceso implements Serializable {
 	private boolean certificado;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="lote_dictamen")
-	private LoteDictamen loteDictamen;
+	@JoinColumn(name="id_lote_dictamen")
+	private LoteDictamen idLoteDictamen;
+	
 	
 	public Proceso() {
 
@@ -108,21 +108,16 @@ public class Proceso implements Serializable {
 		this.certificado = certificado;
 	}
 
-	public LoteDictamen getLoteDictamen() {
-		return loteDictamen;
+	public LoteDictamen getIdLoteDictamen() {
+		return idLoteDictamen;
 	}
 
-	public void setLoteDictamen(LoteDictamen loteDictamen) {
-		this.loteDictamen = loteDictamen;
+	public void setIdLoteDictamen(LoteDictamen idLoteDictamen) {
+		this.idLoteDictamen = idLoteDictamen;
 	}
 
-	@Override
-	public String toString() {
-		return "Proceso [idProceso=" + idProceso + ", idFichaRegistro=" + idFichaRegistro + ", dictamen=" + dictamen
-				+ ", juicio=" + juicio + ", fechaEnvioDictamen=" + fechaEnvioDictamen + ", estado=" + estado
-				+ ", certificado=" + certificado + ", loteDictamen=" + loteDictamen + "]";
-	}
 
+	
 
 	
 }

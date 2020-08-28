@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itok.springboot.app.models.entity.FichaRegistro;
+import com.itok.springboot.app.models.entity.LoteDictamen;
 import com.itok.springboot.app.models.entity.Proceso;
 import com.itok.springboot.app.models.service.IFichaRegistroService;
 import com.itok.springboot.app.models.service.IProcesoService;
@@ -47,6 +48,9 @@ public class ProcesoController {
 			return "redirect:/procesos/procesos";
 		}
 		Proceso proceso = new Proceso();
+		LoteDictamen loteDictamen = new LoteDictamen();
+		loteDictamen.setIdLoteDictamen(0);
+		proceso.setIdLoteDictamen(loteDictamen);
 		proceso.setIdFichaRegistro(fichaRegistro);
 		proceso.setEstado(1);
 		procesoService.save(proceso);
@@ -114,8 +118,7 @@ public class ProcesoController {
 	
 	@PostMapping(value = "asignarDictamen")
 	public String asignarDictamen(Proceso proceso, Model model, RedirectAttributes flash) {
-	
-		proceso.setEstado(0);
+		System.out.println("proceso recibido: " + proceso.toString());
 		procesoService.save(proceso);
 		flash.addFlashAttribute("success", "Juicio asignado con éxito");
 		return "redirect:/procesos/listaActivos";

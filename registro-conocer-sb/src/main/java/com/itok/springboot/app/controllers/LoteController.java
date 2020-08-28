@@ -1,7 +1,5 @@
 package com.itok.springboot.app.controllers;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,53 +15,51 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.itok.springboot.app.models.entity.LoteDictamen;
 import com.itok.springboot.app.models.service.ILoteDictamenService;
 
-//import com.itok.springboot.app.models.service.ILoteDictamenService;
-
 @Controller
-@SessionAttributes("lote")
 @RequestMapping("/lote")
+@SessionAttributes("loteDictamen")
 public class LoteController {
 
 	@Autowired
 	private ILoteDictamenService loteDictamenService;
 	
-	@GetMapping("loteDictamen")
-	public String lote(Model model) {
-		model.addAttribute("listaLotes",loteDictamenService.findAll());
-		model.addAttribute("titulo","Administración de lotes de dictamen");
-		return "/lote/loteDictamen";
+	@GetMapping("/loteDictamen")
+	public String loteDictamen(Model model) {
+		model.addAttribute("listaLotes", loteDictamenService.findAll());
+		model.addAttribute("titulo", "Administración de lotes de dictamen");
+		return"/lote/loteDictamen";
 	}
 	
-	@GetMapping("nuevoLote")
-	public String nuevoLote(Model model) {
-		LoteDictamen lote = new LoteDictamen();
-		model.addAttribute("lote", lote);
-		model.addAttribute("titulo","Nuevo lote de dictamen");
+	@GetMapping("/nuevoLote")
+	public String nuevoLote(Model model) {		
+		LoteDictamen loteDictamen = new LoteDictamen();
+		model.addAttribute("loteDictamen", loteDictamen);
+		model.addAttribute("titulo", "Nuevo lote de dictamen");
 		return "/lote/nuevoLote";
 	}
-	
-	@PostMapping(value = "guardarLote")
-	public String guardarLote (@Valid LoteDictamen lote, BindingResult result, Model model, RedirectAttributes flash,SessionStatus status) {
-		System.out.println("lote recibido: "+  lote.toString());
-		
+
+	@PostMapping("/guardarLote")	
+	public String guardarLote(@Valid LoteDictamen loteDictamen, BindingResult result, Model model, RedirectAttributes flash, SessionStatus status ) {
+		System.out.println("lote recibido: " + loteDictamen.toString());
 		if(result.hasErrors()) {
-			model.addAttribute("lote", lote);
+			model.addAttribute("loteDictamen", loteDictamen);
 			model.addAttribute("titulo","Nuevo lote de dictamen");
 			return "/lote/nuevoLote";
 		}
-		String mensajeFlash=(lote.getIdLoteDictamen() != 0) ? "Lote editado con éxito" : "Lote creado con éxito";
-		loteDictamenService.save(lote);
+		String mensajeFlash=(loteDictamen.getFechaCapturada() != null) ? "Lote editado con éxito" : "Lote creado con éxito";
+		loteDictamenService.save(loteDictamen);
 		flash.addFlashAttribute("success", mensajeFlash);
 		status.setComplete();
-		return "redirect:/lote/loteDictamen"; 
+		return "redirect:/lote/loteDictamen";
 	}
 	
 	@GetMapping(value="/nuevoLote/{id}")
-	public String editar(@PathVariable(value ="id") int id, Model model, RedirectAttributes flash) {
-	LoteDictamen lote=null;
+	public String editarLote(@PathVariable(value="id") int id, Model model, RedirectAttributes flash) {
+		LoteDictamen loteDictamen= null;
+		
 		if(id>0) {
-			lote=loteDictamenService.findOne(id);
-			if(lote==null) {
+			loteDictamen=loteDictamenService.findOne(id);
+			if(loteDictamen==null) {
 				flash.addFlashAttribute("error", "El lote de dictamen ingresado no existe");
 				return "redirect:/lote/loteDictamen";
 			}
@@ -71,10 +67,10 @@ public class LoteController {
 			flash.addFlashAttribute("error", "el id de lote no puede ser cero");
 			return "redirect:/lote/loteDictamen";
 		}
-		model.addAttribute("lote", lote);
+		
+		model.addAttribute("loteDictamen", loteDictamen);
 		model.addAttribute("titulo", "Editar lote de dictamen");
 		return "/lote/nuevoLote";
 	}
-	
 	
 }

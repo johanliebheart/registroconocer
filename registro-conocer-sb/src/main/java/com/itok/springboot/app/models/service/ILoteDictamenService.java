@@ -8,10 +8,11 @@ public interface ILoteDictamenService {
 	
 	public List<LoteDictamen> findAll();
 	
-	public void save(LoteDictamen loteDictamen);
+	public void save(LoteDictamen lote);
 	
-	public LoteDictamen findOne(int id);
+	public LoteDictamen findOne(int id) ;
 	
 	public void delete(int id);
+	
 
 }
