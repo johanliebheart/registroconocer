@@ -116,16 +116,16 @@ public class ProcesoController {
 		}
 		model.addAttribute("listaLotes", loteDictamenService.findAll());
 		model.addAttribute("proceso", proceso);
-		model.addAttribute("titulo", "Asignar dictamen");
+		model.addAttribute("titulo", "Asignar lote de dictamen");
 		return "/procesos/asignarDictamen";
 	}
 	
-	@PostMapping(value = "asignarDictamen")
+	@PostMapping(value = "asignarLoteDictamen")
 	public String asignarDictamen(Proceso proceso, Model model, RedirectAttributes flash) {
 		System.out.println("proceso recibido: " + proceso.toString());
 		proceso.setEstado(0);
 		procesoService.save(proceso);
-		flash.addFlashAttribute("success", "Juicio asignado con éxito");
+		flash.addFlashAttribute("success", "Lote de dictamen asignado con éxito");
 		return "redirect:/procesos/listaActivos";
 	}
 	

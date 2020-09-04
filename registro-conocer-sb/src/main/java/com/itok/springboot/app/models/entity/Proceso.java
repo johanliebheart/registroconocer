@@ -31,8 +31,7 @@ public class Proceso implements Serializable {
 	@JoinColumn(name = "id_ficha_registro")
 	private FichaRegistro idFichaRegistro;
 	
-	private String dictamen;
-
+	
 	private String juicio;
 	
 	@Temporal(TemporalType.DATE)
@@ -73,13 +72,6 @@ public class Proceso implements Serializable {
 		this.idFichaRegistro = idFichaRegistro;
 	}
 
-	public String getDictamen() {
-		return dictamen;
-	}
-
-	public void setDictamen(String dictamen) {
-		this.dictamen = dictamen;
-	}
 
 	public String getJuicio() {
 		return juicio;
