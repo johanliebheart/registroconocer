@@ -34,6 +34,17 @@ public class LoteDictamen implements Serializable {
 	private int procedente;
 	
 	private int estado;
+	
+	private int contador;
+	
+
+	public int getContador() {
+		return contador;
+	}
+
+	public void setContador(int contador) {
+		this.contador = contador;
+	}
 
 	@PrePersist
 	public void setFechaCaptura() {
@@ -88,12 +99,6 @@ public class LoteDictamen implements Serializable {
 		this.estado = estado;
 	}
 
-	@Override
-	public String toString() {
-		return "LoteDictamen [idLoteDictamen=" + idLoteDictamen + ", fechaDictamen=" + fechaDictamen
-				+ ", fechaCapturada=" + fechaCapturada + ", numeroFichas=" + numeroFichas + ", procedente=" + procedente
-				+ "]";
-	}
 
 
 	

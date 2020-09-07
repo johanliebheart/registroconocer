@@ -1,23 +1,16 @@
 package com.itok.springboot.app.models.entity;
-
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.Email;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -76,14 +69,14 @@ public class Candidato implements Serializable{
 	private String estado="Primera Vez";
 
 
-	@OneToMany(mappedBy = "candidato", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<FichaRegistro> fichaRegistro;
+	//@OneToMany(mappedBy = "candidato", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	//private List<FichaRegistro> fichaRegistro;
 	
 	
-	public Candidato() {
+	/*public Candidato() {
 		fichaRegistro = new ArrayList<FichaRegistro>();
 	}
-
+*/
 
 	public int getIdCandidato() {
 		return idCandidato;
@@ -236,25 +229,7 @@ public class Candidato implements Serializable{
 	}
 
 
-	public List<FichaRegistro> getFichaRegistro() {
-		return fichaRegistro;
-	}
-
-
-	public void setFichaRegistro(List<FichaRegistro> fichaRegistro) {
-		this.fichaRegistro = fichaRegistro;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Candidato [idCandidato=" + idCandidato + ", nombre=" + nombre + ", apellidoP=" + apellidoP
-				+ ", apellidoM=" + apellidoM + ", lugarNacimiento=" + lugarNacimiento + ", nacionalidad=" + nacionalidad
-				+ ", email=" + email + ", curp=" + curp + ", genero=" + genero + ", fechaNacimiento=" + fechaNacimiento
-				+ ", domicilio=" + domicilio + ", telefono=" + telefono + ", telefonoCel=" + telefonoCel
-				+ ", imageReference=" + imageReference + ", estado=" + estado + ", fichaRegistro=" + fichaRegistro
-				+ "]";
-	}
+	
 
 
 	

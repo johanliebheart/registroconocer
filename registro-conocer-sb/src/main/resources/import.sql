@@ -20,7 +20,7 @@ INSERT INTO estandar (id_clave_estandar, clave, nombre, vigencia) VALUES(859, 'E
 
 INSERT INTO estandares_autorizados (id_clave_estandar, id_evaluador_independiente, fecha_acreditacion, fecha_finalizacion) VALUES(76,1,'2020-03-23','2021-03-23');
 
-INSERT INTO lote_dictamen (id_lote_dictamen, fecha_capturada, fecha_dictamen, numero_fichas, procedente, estado) VALUES (0,'2020-12-12','2020-12-12',0,0,0);
+INSERT INTO lote_dictamen (id_lote_dictamen, fecha_capturada, fecha_dictamen, numero_fichas, procedente, estado, contador) VALUES (0,'2020-12-12','2020-12-12',0,0,0,0);
 
 
  

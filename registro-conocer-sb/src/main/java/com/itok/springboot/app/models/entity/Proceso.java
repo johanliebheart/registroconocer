@@ -31,7 +31,6 @@ public class Proceso implements Serializable {
 	@JoinColumn(name = "id_ficha_registro")
 	private FichaRegistro idFichaRegistro;
 	
-	
 	private String juicio;
 	
 	@Temporal(TemporalType.DATE)
@@ -51,10 +50,7 @@ public class Proceso implements Serializable {
 	@JoinColumn(name="id_lote_dictamen")
 	private LoteDictamen idLoteDictamen;
 	
-	
-	public Proceso() {
 
-	}
 
 	public int getIdProceso() {
 		return idProceso;
@@ -105,16 +101,17 @@ public class Proceso implements Serializable {
 		this.certificado = certificado;
 	}
 
+
+	public Date getFechaJuicio() {
+		return fechaJuicio;
+	}
+
 	public LoteDictamen getIdLoteDictamen() {
 		return idLoteDictamen;
 	}
 
 	public void setIdLoteDictamen(LoteDictamen idLoteDictamen) {
 		this.idLoteDictamen = idLoteDictamen;
-	}
-
-	public Date getFechaJuicio() {
-		return fechaJuicio;
 	}
 
 	public void setFechaJuicio(Date fechaJuicio) {

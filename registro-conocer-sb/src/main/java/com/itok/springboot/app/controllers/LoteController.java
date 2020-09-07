@@ -37,6 +37,9 @@ public class LoteController {
 		model.addAttribute("titulo", "Nuevo lote de dictamen");
 		return "/lote/nuevoLote";
 	}
+	
+	
+	
 
 	@PostMapping("/guardarLote")	
 	public String guardarLote(@Valid LoteDictamen loteDictamen, BindingResult result, Model model, RedirectAttributes flash, SessionStatus status ) {
@@ -47,6 +50,7 @@ public class LoteController {
 			return "/lote/nuevoLote";
 		}
 		String mensajeFlash=(loteDictamen.getFechaCapturada() != null) ? "Lote editado con éxito" : "Lote creado con éxito";
+		loteDictamen.setContador(loteDictamen.getNumeroFichas());
 		loteDictamenService.save(loteDictamen);
 		flash.addFlashAttribute("success", mensajeFlash);
 		status.setComplete();
@@ -56,7 +60,7 @@ public class LoteController {
 	@GetMapping(value="/nuevoLote/{id}")
 	public String editarLote(@PathVariable(value="id") int id, Model model, RedirectAttributes flash) {
 		LoteDictamen loteDictamen= null;
-		
+		boolean estado=false;
 		if(id>0) {
 			loteDictamen=loteDictamenService.findOne(id);
 			if(loteDictamen==null) {
@@ -70,7 +74,30 @@ public class LoteController {
 		
 		model.addAttribute("loteDictamen", loteDictamen);
 		model.addAttribute("titulo", "Editar lote de dictamen");
+		model.addAttribute("estado", estado);
 		return "/lote/nuevoLote";
 	}
+	
+	@GetMapping(value="/asignarEstado/{id}")
+	public String asignarEstado(@PathVariable(value="id") int id, Model model, RedirectAttributes flash) {
+		LoteDictamen loteDictamen= null;
+		boolean estado=true;
+		if(id>0) {
+			loteDictamen=loteDictamenService.findOne(id);
+			if(loteDictamen==null) {
+				flash.addFlashAttribute("error", "El lote de dictamen ingresado no existe");
+				return "redirect:/lote/loteDictamen";
+			}
+		}else {
+			flash.addFlashAttribute("error", "el id de lote no puede ser cero");
+			return "redirect:/lote/loteDictamen";
+		}
+		
+		model.addAttribute("loteDictamen", loteDictamen);
+		model.addAttribute("titulo", "Editar lote de dictamen");
+		model.addAttribute("estado", estado);
+		return "/lote/nuevoLote";
+	}
+	
 	
 }

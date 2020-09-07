@@ -33,6 +33,8 @@
 								<th>Fecha de captura</th>
 								<th>Fecha de dictamen</th>
 								<th>Número de fichas</th>
+								<th>Fichas restantes </th>
+								<th>Registrar estado</th>
 								<th>Procedente</th>
 							</tr>
 						</thead>
@@ -42,6 +44,8 @@
 								<td th:text="${var.fechaCapturada}"></td>
 								<td th:text="${var.fechaDictamen}">3</td>
 								<td th:text="${var.numeroFichas}">5</td>
+								<td th:text="${var.numeroFichas}">5</td>
+								<td><a class="btn btn-danger" th:href="@{/lote/asignarEstado/}+ ${var.idLoteDictamen} " th:text="Registrar"></a></td>
 								<td th:text="${var.procedente} ? 'Si':'No'">6</td>
 						</tbody>
 						<tfoot>
@@ -50,6 +54,8 @@
 								<th>Fecha de captura</th>
 								<th>Fecha de dictamen</th>
 								<th>Número de fichas</th>
+								<th>Fichas restantes </th>
+								<th>Registrar estado</th>
 								<th>Procedente</th>
 							</tr>
 						</tfoot>
