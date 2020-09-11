@@ -6,6 +6,8 @@ import com.itok.springboot.app.models.entity.LoteDictamen;
 
 public interface ILoteDictamenService {
 	
+	public List<LoteDictamen> findByProcedente();
+	
 	public List<LoteDictamen> findAll();
 	
 	public void save(LoteDictamen lote);

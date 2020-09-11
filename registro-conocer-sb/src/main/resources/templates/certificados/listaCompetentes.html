@@ -39,7 +39,7 @@
 								<th>Juicio</th>
 								<th>Fecha envío a dictamen</th>
 								<th>Lote de Dictamen</th>
-								<th>Dictamen</th>
+							
 								<th>Certificado</th>
 							</tr>
 						</thead>
@@ -50,9 +50,8 @@
 								<td th:text="${var.idFichaRegistro.idClaveEstandar.clave} +' - '+ ${var.idFichaRegistro.idClaveEstandar.nombre}">3</td>
 								<td th:text="${var.idFichaRegistro.fechaRegistro}">4</td>
 								<td th:text="${var.juicio}">5</td>
-								<td th:text="${var.fechaEnvioDictamen}"></td>
+								<td th:text="${var.idLoteDictamen.fechaDictamen}"></td>
 								<td th:text="${var.idLoteDictamen.idLoteDictamen} ? ${var.idLoteDictamen.idLoteDictamen} : 'no asignado'">7</td>							
-								<td th:text="${var.dictamen}">7</td>
 								<td><a class="btn btn-success" th:href="@{/certificados/nuevo/} + ${var.idProceso} " th:text="Añadir"></a></td>
 
 							</tr>
@@ -67,7 +66,6 @@
 								<th>Juicio</th>
 								<th>Fecha envío a dictamen</th>
 								<th>Lote de Dictamen</th>
-								<th>Dictamen</th>
 								<th>Certificado</th>
 							</tr>
 						</tfoot>

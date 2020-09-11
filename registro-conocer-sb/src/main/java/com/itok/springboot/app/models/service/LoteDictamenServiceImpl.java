@@ -21,6 +21,12 @@ public class LoteDictamenServiceImpl implements ILoteDictamenService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
+	public List<LoteDictamen> findByProcedente() {
+		return (List<LoteDictamen>) loteDictamenDao.findByProcedente();
+	}
+
+	@Override
 	@Transactional
 	public void save(LoteDictamen lote) {
 		loteDictamenDao.save(lote);
@@ -39,4 +45,5 @@ public class LoteDictamenServiceImpl implements ILoteDictamenService {
 
 	}
 
+	
 }

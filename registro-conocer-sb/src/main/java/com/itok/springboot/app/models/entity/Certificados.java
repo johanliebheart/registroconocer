@@ -3,12 +3,12 @@ package com.itok.springboot.app.models.entity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -16,7 +16,6 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "certificados")
 public class Certificados implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -25,7 +24,7 @@ public class Certificados implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCertificado;
 	
-	@OneToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_proceso", nullable = false)
 	private Proceso idProceso;
 	
@@ -158,7 +157,6 @@ public class Certificados implements Serializable {
 				+ ", vigencia=" + vigencia + ", impresionCert=" + impresionCert + ", impresionCred=" + impresionCred
 				+ ", folioCertificado=" + folioCertificado + ", estado=" + estado + ", emision=" + emision + "]";
 	}
-
 
 	
 	

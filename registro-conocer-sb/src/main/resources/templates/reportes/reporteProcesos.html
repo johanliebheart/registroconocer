@@ -38,8 +38,10 @@
 								<th>Fecha de registro</th>
 								<th>Juicio</th>
 								<th>Fecha de Juicio</th>
-								<th>Fecha envío a dictamen</th>
-								<th>Folio de Dictamen</th>
+								<th>Lote de Dictamen</th>
+								<th>Fecha Lote de Dictamen</th>
+								<th>Estado</th>
+								
 								
 							</tr>
 						</thead>
@@ -50,10 +52,14 @@
 								<td th:text="${var.idFichaRegistro.idClaveEstandar.clave} +' - '+ ${var.idFichaRegistro.idClaveEstandar.nombre}">3</td>
 								<td th:text="${var.idFichaRegistro.fechaRegistro}">4</td>
 								<td th:text="${var.juicio}">5</td>
-								<td th:text="${var.fechaJuicio}"></td>
-								<td th:text="${var.fechaEnvioDictamen}"></td>
-								<td th:text="${var.idProceso}">7</td>
-								<!--  <td th:text="${var.estado} ? 'Activo':'Inactivo'">8</td>-->
+								<td th:text="${var.fechaJuicio}">5</td>
+								
+						<!--  		<td th:text="${var.idLoteDictamen.idLoteDictamen} ? ${var.idLoteDictamen.idLoteDictamen} : 'no asignado'">7</td>
+							-->
+								<td th:text="${var.idLoteDictamen.idLoteDictamen}">5</td>
+								<!--<td>. </td>-->
+								<td th:text="${var.idLoteDictamen.fechaDictamen}">5</td>
+								<td th:text="${var.estado} ? 'Activo' : 'Inactivo'">7</td>
 							</tr>
 
 						</tbody>
@@ -65,9 +71,11 @@
 								<th>Fecha de registro</th>
 								<th>Juicio</th>
 								<th>Fecha de Juicio</th>
-								<th>Fecha envío a dictamen</th>
-								<th>Folio de Dictamen</th>
+								<th>Lote de Dictamen</th>
+				 				<th>Fecha Lote de Dictamen</th>
+				 				<th>Estado</th>
 								
+							</tr>
 						</tfoot>
 					</table>
 				</div>

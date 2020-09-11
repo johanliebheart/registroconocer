@@ -9,8 +9,8 @@ import com.itok.springboot.app.models.entity.LoteDictamen;
 
 public interface ILoteDictamenDao extends PagingAndSortingRepository<LoteDictamen, Integer> {
 	
-	@Query("select p from LoteDictamen p where p.estado = 1")
-	public List<LoteDictamen> findByActivo();
+	@Query("select p from LoteDictamen p where p.procedente = 1")
+	public List<LoteDictamen> findByProcedente();
 
 	
 }

@@ -57,12 +57,14 @@ public class EvaluadorIndependienteServiceImpl implements IEvaluadorIndependient
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<EvaluadorIndependiente> findByNombre(String term) {
 		
 		return evaluadorIndependienteDao.findByNombre(term);
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<EstandaresAutorizados> findEstandares(int id) {
 		
 		return estandaresAutorizadosDao.findByEvaluador(id);

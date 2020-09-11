@@ -41,7 +41,7 @@
 								<th>Asignar Juicio</th>
 								
 				 				<th>Lote de Dictamen</th>
-							
+								<th>Fecha Lote de Dictamen</th>
 								<th>Asignar Dictamen</th>
 								
 								
@@ -58,7 +58,9 @@
 								<td><a class="btn btn-success" th:href="@{/procesos/asignar/} + ${var.idProceso} " th:text="Asignar"></a></td>
 						<!--  		<td th:text="${var.idLoteDictamen.idLoteDictamen} ? ${var.idLoteDictamen.idLoteDictamen} : 'no asignado'">7</td>
 							-->
-								<td>. </td>
+								<td th:text="${var.idLoteDictamen.idLoteDictamen}">5</td>
+								<!--<td>. </td>-->
+								<td th:text="${var.idLoteDictamen.fechaDictamen}">5</td>
 								<td><a class="btn btn-danger" th:href="@{/procesos/asignarLote/} + ${var.idProceso} "  onclick="return confirm('Atención, una vez que se establezca el Dictamen del proceso de evaluación, este no podrá ser editado. Ya que el proceso pasará a un estado inactivo');"  th:text="Asignar"></a></td>
 							</tr>
 
@@ -74,6 +76,7 @@
 								<th>Asignar Juicio	</th>
 								
 				 				<th>Lote de Dictamen</th>
+				 				<th>Fecha Lote de Dictamen</th>
 								<th>Asignar Dictamen</th>
 							</tr>
 						</tfoot>

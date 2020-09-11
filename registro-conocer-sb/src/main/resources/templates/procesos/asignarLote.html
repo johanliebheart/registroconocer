@@ -81,8 +81,7 @@
 
 									<!-- ********************************************* -->
 									<hr>
-									<form th:action="@{/procesos/asignarDictamen}"
-										th:object="${proceso}" method="post">
+									<form th:action="@{/procesos/asignarDictamen}" th:object="${proceso}" method="post">
 										<!--  th:field="*{idClaveEstandar}" -->
 
 
@@ -92,7 +91,7 @@
 											<div class="col-sm-4">
 												<div class="form-group">
 													<label>Selecciona el Lote de Dictamen	</label> <select
-														th:field="*{idLoteDictamen.idLoteDictamen}"
+														th:field="*{temporal}"
 														class="form-control select2" style="width: 100%;">
 														<option th:each="variable : ${listaLotes}"
 															th:text="${variable.idLoteDictamen}"

@@ -14,10 +14,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "proceso")
 public class Proceso implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -27,15 +28,12 @@ public class Proceso implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idProceso;
 	
-	@OneToOne()
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_ficha_registro")
 	private FichaRegistro idFichaRegistro;
 	
 	private String juicio;
 	
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date fechaEnvioDictamen;
 	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -50,6 +48,8 @@ public class Proceso implements Serializable {
 	@JoinColumn(name="id_lote_dictamen")
 	private LoteDictamen idLoteDictamen;
 	
+	@Transient
+	public int temporal;
 
 
 	public int getIdProceso() {
@@ -77,13 +77,7 @@ public class Proceso implements Serializable {
 		this.juicio = juicio;
 	}
 
-	public Date getFechaEnvioDictamen() {
-		return fechaEnvioDictamen;
-	}
 
-	public void setFechaEnvioDictamen(Date fechaEnvioDictamen) {
-		this.fechaEnvioDictamen = fechaEnvioDictamen;
-	}
 
 	public int getEstado() {
 		return estado;
@@ -116,6 +110,22 @@ public class Proceso implements Serializable {
 
 	public void setFechaJuicio(Date fechaJuicio) {
 		this.fechaJuicio = fechaJuicio;
+	}
+
+	
+	public int getTemporal() {
+		return temporal;
+	}
+
+	public void setTemporal(int temporal) {
+		this.temporal = temporal;
+	}
+
+	@Override
+	public String toString() {
+		return "Proceso [idProceso=" + idProceso + ", idFichaRegistro=" + idFichaRegistro + ", juicio=" + juicio
+				+ ", fechaEnvioDictamen=" + fechaJuicio + ", estado=" + estado
+				+ ", certificado=" + certificado + ", idLoteDictamen=" + idLoteDictamen + "]";
 	}
 
 

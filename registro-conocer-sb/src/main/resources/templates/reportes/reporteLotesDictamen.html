@@ -38,7 +38,7 @@
 						</thead>
 						<tbody>
 							<tr th:each="var: ${listaLotesDictamen}">
-							<td><a class="btn btn-primary" th:href="@{/lote/nuevoLote/}+ ${var.idLoteDictamen} " th:text="${var.idLoteDictamen}"></a></td>
+							<td th:text="${var.idLoteDictamen} "></td>
 								<td th:text="${var.fechaCapturada}"></td>
 								<td th:text="${var.fechaDictamen}">3</td>
 								<td th:text="${var.numeroFichas}">5</td>

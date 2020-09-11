@@ -54,7 +54,15 @@ public class CertificadosController {
 		}
 
 	}
-
+	
+	@PostMapping(value = "registrarCertificado")
+	public String registrar(Certificados certificados) {
+		System.out.println("controlador certificados");
+		System.out.println("certificado: " +  certificados.toString());
+		return "redirect:/certificados/listaCompetentes";
+	}
+	
+/*
 	@PostMapping(value = "registrarCertificado")
 	public String registrar(@Valid Certificados certificados, BindingResult result, Model model,
 			RedirectAttributes flash, SessionStatus status) {
@@ -86,7 +94,7 @@ public class CertificadosController {
 		flash.addFlashAttribute("success", mensajeFlash);
 		status.setComplete();
 		return "redirect:/reportes/reporteCertificados";
-	}
+	}*/
 
 	@GetMapping(value = "/editar/{id}")
 	public String editar(@PathVariable(value = "id") int id, Model model, RedirectAttributes flash) {
@@ -97,7 +105,6 @@ public class CertificadosController {
 				flash.addFlashAttribute("error", "El ID del certificado no existe en la BBDD!");
 				return "redirect:/certificados/reporteCertificados";
 			}
-
 			model.addAttribute("certificados", certificados);
 			model.addAttribute("titulo", "Añadir folio de certificado");
 			return "/certificados/nuevoCertificado";

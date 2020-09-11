@@ -15,7 +15,7 @@ import com.sun.istack.NotNull;
 @Entity
 public class LoteDictamen implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; 
 	
 	@Id
 	private int idLoteDictamen;
@@ -33,10 +33,28 @@ public class LoteDictamen implements Serializable {
 	
 	private int procedente;
 	
-	private int estado;
-	
 	private int contador;
 	
+	
+
+	public LoteDictamen(int idLoteDictamen, Date fechaDictamen, Date fechaCapturada, int numeroFichas, int procedente,
+			int contador) {
+		
+		this.idLoteDictamen = idLoteDictamen;
+		this.fechaDictamen = fechaDictamen;
+		this.fechaCapturada = fechaCapturada;
+		this.numeroFichas = numeroFichas;
+		this.procedente = procedente;
+		this.contador = contador;
+	}
+
+	
+	
+	public LoteDictamen() {
+		
+	}
+
+
 
 	public int getContador() {
 		return contador;
@@ -91,13 +109,6 @@ public class LoteDictamen implements Serializable {
 	}
 
 	
-	public int getEstado() {
-		return estado;
-	}
-
-	public void setEstado(int estado) {
-		this.estado = estado;
-	}
 
 
 
