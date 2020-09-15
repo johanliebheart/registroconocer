@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-public class Certificados implements Serializable {
+public class Certificado implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -26,6 +26,7 @@ public class Certificados implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_proceso", nullable = false)
+	
 	private Proceso idProceso;
 	
 	@NotNull
@@ -44,14 +45,31 @@ public class Certificados implements Serializable {
 	
 	private String folioCertificado;
 
-	private boolean estado;
+	private boolean estado=true;
 
 	private boolean emision;
 	
 	
-	public Certificados() {
+	public Certificado() {
 		
 	}
+
+
+
+	public Certificado(int idCertificado, Proceso idProceso, @NotNull Date fecha, @NotNull Date vigencia,
+			boolean impresionCert, boolean impresionCred, String folioCertificado, boolean estado, boolean emision) {
+		
+		this.idCertificado = idCertificado;
+		this.idProceso = idProceso;
+		this.fecha = fecha;
+		this.vigencia = vigencia;
+		this.impresionCert = impresionCert;
+		this.impresionCred = impresionCred;
+		this.folioCertificado = folioCertificado;
+		this.estado = estado;
+		this.emision = emision;
+	}
+
 
 
 	public int getIdCertificado() {

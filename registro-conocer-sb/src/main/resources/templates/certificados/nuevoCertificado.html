@@ -20,7 +20,7 @@
 						<!-- /.card-header -->
 						<!-- form start -->
 						<form th:action="@{/certificados/registrarCertificado}"
-							th:object="${certificados}" method="post">
+							th:object="${certificado}" method="post">
 							<div class="card-body">
 								<div class="row">
 									<div class="col-sm-6">
@@ -30,7 +30,7 @@
 
 												<input type="text" class="form-control"
 													placeholder="Nombres"
-													th:value="${certificados.idProceso.idFichaRegistro.candidato.nombre} +' '+${certificados.idProceso.idFichaRegistro.candidato.apellidoP}+' '+${certificados.idProceso.idFichaRegistro.candidato.apellidoM} "
+													th:value="${certificado.idProceso.idFichaRegistro.candidato.nombre} +' '+${certificado.idProceso.idFichaRegistro.candidato.apellidoP}+' '+${certificado.idProceso.idFichaRegistro.candidato.apellidoM} "
 													onkeyup="mayus(this);" disabled="disabled">
 											</div>
 										</div>
@@ -42,7 +42,7 @@
 
 												<input type="text" class="form-control"
 													placeholder="Nombres"
-													th:value="${certificados.idProceso.idFichaRegistro.idEvaluadorIndependiente.nombre} "
+													th:value="${certificado.idProceso.idFichaRegistro.idEvaluadorIndependiente.nombre} "
 													onkeyup="mayus(this);" disabled="disabled">
 											</div>
 										</div>
@@ -55,7 +55,7 @@
 
 												<input type="text" class="form-control"
 													placeholder="Nombres"
-													th:value="${certificados.idProceso.idFichaRegistro.idClaveEstandar.clave} +' - '+ ${certificados.idProceso.idFichaRegistro.idClaveEstandar.nombre} "
+													th:value="${certificado.idProceso.idFichaRegistro.idClaveEstandar.clave} +' - '+ ${certificado.idProceso.idFichaRegistro.idClaveEstandar.nombre} "
 													onkeyup="mayus(this);" disabled="disabled">
 											</div>
 										</div>
@@ -68,7 +68,7 @@
 
 												<input type="text" class="form-control"
 													placeholder="Nombres"
-													th:value="${certificados.idProceso.idFichaRegistro.FechaRegistro} "
+													th:value="${certificado.idProceso.idFichaRegistro.FechaRegistro} "
 													onkeyup="mayus(this);" disabled="disabled">
 											</div>
 										</div>
@@ -81,31 +81,32 @@
 
 												<input type="text" class="form-control"
 													placeholder="Nombres"
-													th:value="${certificados.idProceso.idLoteDictamen.idLoteDictamen} "
+													th:value="${certificado.idProceso.idLoteDictamen.idLoteDictamen} "
 													onkeyup="mayus(this);" disabled="disabled">
 											</div>
 										</div>
 									</div>
-
+ 
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label>Juicio de competencia</label>
 											<div class="input-group-prepend">
 
 												<input type="text" class="form-control"
-													placeholder="Nombres" th:value="${certificados.idProceso.juicio} "
+													placeholder="Nombres" th:value="${certificado.idProceso.juicio} "
 													onkeyup="mayus(this);" disabled="disabled">
 											</div>
 										</div>
 									</div>
-
-
 								</div>
 
 								<div class="row">
 
 
 									<div class="col-sm-6">
+
+
+										
 
 										<div class="form-group ">
 											<label>Folio del certificado</label>
@@ -141,14 +142,8 @@
 											</div>
 										</div>
 									</div>
-
-
-								
-									
-
+					
 								</div>
-
-
 
 							</div>
 							<!-- /.card-body -->

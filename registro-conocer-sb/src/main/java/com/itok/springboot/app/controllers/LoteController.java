@@ -31,15 +31,14 @@ public class LoteController {
 	}
 	
 	@GetMapping("/nuevoLote")
-	public String nuevoLote(Model model) {		
+	public String nuevoLote(Model model) {	
+		
 		LoteDictamen loteDictamen = new LoteDictamen();
 		model.addAttribute("loteDictamen", loteDictamen);
 		model.addAttribute("titulo", "Nuevo lote de dictamen");
+		
 		return "/lote/nuevoLote";
 	}
-	
-	
-	
 
 	@PostMapping("/guardarLote")	
 	public String guardarLote(@Valid LoteDictamen loteDictamen, BindingResult result, Model model, RedirectAttributes flash, SessionStatus status ) {

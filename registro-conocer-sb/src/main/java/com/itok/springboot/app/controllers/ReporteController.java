@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.itok.springboot.app.models.service.ICertificadosService;
+import com.itok.springboot.app.models.service.ICertificadoService;
 import com.itok.springboot.app.models.service.IEvaluadorIndependienteService;
 import com.itok.springboot.app.models.service.IFichaRegistroService;
 import com.itok.springboot.app.models.service.ILoteDictamenService;
@@ -24,7 +24,7 @@ public class ReporteController {
 	@Autowired
 	private ILoteDictamenService loteDictamenService;
 	@Autowired
-	private ICertificadosService certificadosService;
+	private ICertificadoService certificadosService;
 
 
 	@GetMapping(value = "/reporteFichas")

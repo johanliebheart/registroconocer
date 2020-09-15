@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -44,9 +43,10 @@ public class Proceso implements Serializable {
 	
 	private boolean certificado;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="id_lote_dictamen")
 	private LoteDictamen idLoteDictamen;
+	
 	
 	@Transient
 	public int temporal;
@@ -121,12 +121,7 @@ public class Proceso implements Serializable {
 		this.temporal = temporal;
 	}
 
-	@Override
-	public String toString() {
-		return "Proceso [idProceso=" + idProceso + ", idFichaRegistro=" + idFichaRegistro + ", juicio=" + juicio
-				+ ", fechaEnvioDictamen=" + fechaJuicio + ", estado=" + estado
-				+ ", certificado=" + certificado + ", idLoteDictamen=" + idLoteDictamen + "]";
-	}
+	
 
 
 }

@@ -13,7 +13,7 @@
 			<!-- Default box -->
 			<div class="card">
 				<div class="card-header">
-					<h3 class="card-title">Lista de procesos activos</h3>
+					<h3 class="card-title">Lista de folios para autorizar pagos</h3>
 
 					<div class="card-tools">
 						<button type="button" class="btn btn-tool"
@@ -36,27 +36,28 @@
 								<th>Nombre Candidato</th>
 								<th>Evaluador</th>
 								<th>Estandar</th>
-								<th>Fecha de registro</th>
 								<th>Juicio</th>
-								<th>Fecha dictamen</th>
-								<th>Lote de Dictamen</th>
+								<th>Folio de Certificado</th>
+								<th>Fecha emisión</th>
+								<th>Vigencia</th>
 								<th>Certificado</th>
+								<th>Registrar </th>
 								
 								
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="var: ${listaCertificados}">
-								<td><a class="btn btn-primary"th:href="@{/certificados/editar/} + ${var.idCertificado}"  th:text="${var.idCertificado}"></a></td>
+								<td  th:text="${var.idCertificado}"></td>
 								<td th:text="${var.idProceso.idFichaRegistro.candidato.nombre} + ' ' + ${var.idProceso.idFichaRegistro.candidato.apellidoP} +' '+ ${var.idProceso.idFichaRegistro.candidato.apellidoM} "></td>
 								<td th:text="${var.idProceso.idFichaRegistro.idEvaluadorIndependiente.nombre}">2</td>
 								<td th:text="${var.idProceso.idFichaRegistro.idClaveEstandar.clave} +' - '+ ${var.idProceso.	idFichaRegistro.idClaveEstandar.nombre}">3</td>
-								<td th:text="${var.idProceso.idFichaRegistro.fechaRegistro}">4</td>
 								<td th:text="${var.idProceso.juicio}">5</td>
-								<td th:text="${var.idProceso.idLoteDictamen.fechaDictamen}">5</td>
-								<td th:text="${var.idProceso.idLoteDictamen.idLoteDictamen}">7</td>
+								<td th:text="${var.folioCertificado}" class="text-nowrap" style="width: 8rem;">5</td>
+								<td th:text="${var.fecha}">5</td>
+								<td th:text="${var.vigencia}">7</td>
 								<td th:text="${var.folioCertificado}">7</td>
-								
+								<td><a class="btn btn-success" th:href="@{/finanzas/asignarPago/} + ${var.idCertificado} " th:text="Asignar"></a></td>
 							</tr>
 
 						</tbody>
@@ -66,11 +67,12 @@
 								<th>Nombre Candidato</th>
 								<th>Evaluador</th>
 								<th>Estandar</th>
-								<th>Fecha de registro</th>
 								<th>Juicio</th>
-								<th>Fecha dictamen</th>
-								<th>Lote de Dictamen</th>
+								<th>Folio de Certificado</th>
+								<th>Fecha emisión</th>
+								<th>Vigencia</th>
 								<th>Certificado</th>
+								<th>Registrar </th>
 							</tr>
 						</tfoot>
 					</table>
