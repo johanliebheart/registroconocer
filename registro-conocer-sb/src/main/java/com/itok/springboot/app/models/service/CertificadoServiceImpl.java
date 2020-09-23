@@ -25,10 +25,29 @@ public class CertificadoServiceImpl implements ICertificadoService {
 
 	
 	@Override
+	@Transactional(readOnly = true)
 	public List<Certificado> findByActivo() {
 		return (List<Certificado>) certificadoDao.findByActivo();
 	}
-
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Certificado> findByPagado() {
+		return (List<Certificado>) certificadoDao.findByPagado();
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Certificado> findByEmision() {
+		return (List<Certificado>) certificadoDao.findByEmision();
+		
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Certificado> findByTerminado() {
+		return (List<Certificado>) certificadoDao.findByTerminado();
+	}
 
 	@Override
 	@Transactional(readOnly = true)
@@ -53,5 +72,14 @@ public class CertificadoServiceImpl implements ICertificadoService {
 	public void delete(int id) {
 		certificadoDao.deleteById(id);
 	}
+
+
+	
+
+
+	
+
+
+	
 
 }

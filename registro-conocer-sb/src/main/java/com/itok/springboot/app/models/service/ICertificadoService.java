@@ -12,6 +12,12 @@ public interface ICertificadoService {
 	
 	public List<Certificado> findByActivo();
 	
+	public List<Certificado> findByPagado();
+	
+	public List<Certificado> findByEmision();
+	
+	public List<Certificado> findByTerminado();
+	
 	public Page<Certificado> findAll(Pageable pageable);
 	
 	public void save(Certificado certificados);

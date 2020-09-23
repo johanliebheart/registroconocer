@@ -19,7 +19,7 @@
 						</div>
 						<!-- /.card-header -->
 						<!-- form start -->
-						<form th:action="@{/certificados/registrarCertificado}"
+						<form th:action="@{/finanzas/registrarPago}"
 							th:object="${certificado}" method="post">
 							<div class="card-body">
 								<div class="row">
@@ -60,73 +60,29 @@
 											</div>
 										</div>
 									</div>
-
 									<div class="col-sm-6">
-										<div class="form-group">
-											<label>Fecha de Registro</label>
-											<div class="input-group-prepend">
-
-												<input type="text" class="form-control"
-													placeholder="Nombres"
-													th:value="${certificado.idProceso.idFichaRegistro.FechaRegistro} "
-													onkeyup="mayus(this);" disabled="disabled">
-											</div>
-										</div>
-									</div>
-
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label>Folio de dictamen</label>
-											<div class="input-group-prepend">
-
-												<input type="text" class="form-control"
-													placeholder="Nombres"
-													th:value="${certificado.idProceso.idLoteDictamen.idLoteDictamen} "
-													onkeyup="mayus(this);" disabled="disabled">
-											</div>
-										</div>
-									</div>
- 
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label>Juicio de competencia</label>
-											<div class="input-group-prepend">
-
-												<input type="text" class="form-control"
-													placeholder="Nombres" th:value="${certificado.idProceso.juicio} "
-													onkeyup="mayus(this);" disabled="disabled">
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="row">
-
-
-									<div class="col-sm-6">
-
-
-										
-
 										<div class="form-group ">
 											<label>Folio del certificado</label>
 											<div class="input-group-prepend">
 
 												<input type="text" class="form-control"
-													th:field="*{folioCertificado}" placeholder="Folio"
-													onkeyup="mayus(this);" required="required">
+													th:value="${certificado.folioCertificado}"
+													placeholder="Folio" onkeyup="mayus(this);"
+													disabled="disabled">
 											</div>
 										</div>
-
 									</div>
+
+
 
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label>Fecha de expedición</label>
 											<div class="input-group-prepend">
 
-												<input type="date" class="form-control" th:field="*{fecha}"
-													placeholder="Fecha" required="required">
+												<input type="date" class="form-control"
+													th:value="${certificado.fecha}" placeholder="Fecha"
+													disabled="disabled">
 											</div>
 										</div>
 									</div>
@@ -137,14 +93,50 @@
 											<div class="input-group-prepend">
 
 												<input type="date" class="form-control"
-													th:field="*{vigencia}" placeholder="Fecha"
-													required="required">
+													th:value="${certificado.vigencia}" placeholder="Fecha"
+													disabled="disabled">
 											</div>
 										</div>
 									</div>
-					
+
 								</div>
 
+								<div class="row">
+								
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label>Impresión de Certificado</label>
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="radio2"
+													checked th:field="*{impresionCert}" th:value="1"> <label
+													class="form-check-label">SI</label>
+											</div>
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="radio2"
+													th:field="*{impresionCert}" th:value="0"> <label
+													class="form-check-label">NO</label>
+											</div>
+										</div>
+									</div>
+
+
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label>Impresión de Credencial</label>
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="radio2"
+													checked th:field="*{impresionCred}" th:value="1"> <label
+													class="form-check-label">SI</label>
+											</div>
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="radio2"
+													th:field="*{impresionCred}" th:value="0"> <label
+													class="form-check-label">NO</label>
+											</div>
+										</div>
+									</div>
+
+								</div>
 							</div>
 							<!-- /.card-body -->
 

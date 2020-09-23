@@ -27,7 +27,7 @@ public class ReporteController {
 	private ICertificadoService certificadosService;
 
 
-	@GetMapping(value = "/reporteFichas")
+	@GetMapping(value = "/reporteFichas") 
 	public String reporteFichas(Model model) {
 		model.addAttribute("listaFichas", fichaRegistroService.findAll());
 		model.addAttribute("titulo", "Reporte de fichas");
@@ -61,4 +61,20 @@ public class ReporteController {
 		model.addAttribute("listaCertificados", certificadosService.findAll());
 		return "reportes/reporteCertificados";	
 		}
+	
+	@GetMapping("/reportePagos")
+	public String reportePagos(Model model) {
+		model.addAttribute("titulo", "Reporte de Pagos registrados");
+		model.addAttribute("listaCertificados", certificadosService.findByPagado());
+		return "reportes/reportePagos";
+	}
+	
+	@GetMapping("/reporteEmisiones")
+	public String reporteEmisiones(Model model) {
+		model.addAttribute("titulo", "Reporte de Pagos registrados");
+		model.addAttribute("listaCertificados", certificadosService.findByTerminado());
+		return "reportes/reporteEmisiones";
+	}
+	
+	
 }

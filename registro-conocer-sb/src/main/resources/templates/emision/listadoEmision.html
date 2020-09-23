@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body class="hold-transition sidebar-mini">
+
+	<header th:replace="layout/layout ::header"></header>
+	<aside th:replace="layout/layout ::aside"></aside>
+	<div class="content-wrapper">
+		<section th:replace="layout/layout ::section1"></section>
+
+		<section class="content">
+
+			<!-- Default box -->
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-title">Lista de folios para impresión</h3>
+
+					<div class="card-tools">
+						<button type="button" class="btn btn-tool"
+							data-card-widget="collapse" data-toggle="tooltip"
+							title="Collapse">
+							<i class="fas fa-minus"></i>
+						</button>
+						<button type="button" class="btn btn-tool"
+							data-card-widget="remove" data-toggle="tooltip" title="Remove">
+							<i class="fas fa-times"></i>
+						</button>
+					</div>
+				</div>
+
+				<div class="card-body">
+					<table id="example1" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Candidato</th>
+								<th>Evaluador</th>
+								<th>Estandar</th>
+								<th>Folio Cert</th>
+								<th>ID Credencial </th>
+								<th>Fecha emisión</th>
+								<th>Vigencia</th>
+								<th>Certificado</th>
+								<th>Credencial</th>
+								<th>Foto </th>
+								<th>Estado</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="var: ${listaCertificados}">
+								<td  th:text="${var.idCertificado}"></td>
+								<td th:text="${var.idProceso.idFichaRegistro.candidato.nombre} + ' ' + ${var.idProceso.idFichaRegistro.candidato.apellidoP} +' '+ ${var.idProceso.idFichaRegistro.candidato.apellidoM} "></td>
+								<td th:text="${var.idProceso.idFichaRegistro.idEvaluadorIndependiente.nombre}">2</td>
+								<td th:text="${var.idProceso.idFichaRegistro.idClaveEstandar.clave} +' - '+ ${var.idProceso.	idFichaRegistro.idClaveEstandar.nombre}">3</td>
+								<td th:text="${var.folioCertificado}" >5</td>
+								<td th:text="'00'+ ${var.idProceso.idFichaRegistro.idEvaluadorIndependiente.idEvaluadorIndependiente} + '00' + ${var.idProceso.idFichaRegistro.candidato.idCandidato}"></td>
+								
+								<td th:text="${var.fecha}">5</td>
+								<td th:text="${var.vigencia}">7</td>
+								
+								<td style="color:#3498DB" th:text="${var.impresionCert} ? 'IMPRIMIR' : ' '">7</td>
+								<td  style="color:#D35400" th:text="${var.impresionCred} ? 'IMPRIMIR' : ' '">7</td>
+								<td><a class="btn btn-success" th:href="@{/uploads/} + ${var.idProceso.idFichaRegistro.candidato.imageReference} " th:download="imgCandidato.jpg" th:text="Descargar"></a></td>
+								<!-- <td><a  href="resources/conocer/img/${vara.idProceso.idFichaRegistro.candidato.imageReference}" download="imgCandidato.jpg">Descargar</a></td> 
+								 -->
+								<td><a class="btn btn-danger" th:href="@{/emision/terminarEmision/} + ${var.idCertificado} " th:text="Terminado"></a></td>
+							</tr>
+
+						</tbody>
+						<tfoot>
+							<tr>
+								<th>ID</th>
+								<th>Candidato</th>
+								<th>Evaluador</th>
+								<th>Estandar</th>
+								<th>Folio Cert</th>
+								<th>ID Credencial </th>
+								<th>Fecha emisión</th>
+								<th>Vigencia</th>
+								<th>Certificado</th>
+								<th>Credencial</th>
+								<th>Foto </th>
+								<th>Estado</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+				<!-- /.card-body -->
+				<div class="card-footer"></div>
+				<!-- /.card-footer-->
+			</div>
+			<!-- /.card -->
+
+		</section>
+
+
+	</div>
+	<footer th:replace="layout/layout ::footer"></footer>
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+	<section th:replace="layout/layout ::section2"></section>
+	
+</body>
+</html>
+
