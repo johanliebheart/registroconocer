@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security/">
 <head th:fragment="head">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -56,12 +56,19 @@
 				class="main-header navbar navbar-expand navbar-white navbar-light">
 				<!-- Left navbar links -->
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link"
-						data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a></li>
+					<li class="nav-item"><a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a></li>
 					<li class="nav-item d-none d-sm-inline-block"><a
-						href="../../index3.html" class="nav-link">Inicio</a></li>
-					<li class="nav-item d-none d-sm-inline-block"><a href="#"
-						class="nav-link">Salir</a></li>
+						href="../../index3.html" class="btn btn-outline-primary">Inicio</a></li> 
+						
+					<li class="nav-item d-none d-sm-inline-block">
+						<form id="logoutForm" th:action="@{/logout}" method="post">
+								<button class="btn btn-outline-danger" onclick="documetn.getElementById('logoutForm').submit();" type="submit">Salir</button>
+								<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+								
+								
+							</form>
+					</li>
+				
 				</ul>
 
 				<!-- SEARCH FORM -->
@@ -135,8 +142,8 @@
 					<img src="../../dist/img/user2-160x160.jpg"
 						class="img-circle elevation-2" alt="User Image">
 				</div>
-				<div class="info">
-					<a href="#" class="d-block">Tu nombre</a>
+				<div class="info" sec:authorize="isAuthenticated()">
+					<a href="#" class="d-block" sec:authentication="name"></a>
 				</div>
 			</div>
 

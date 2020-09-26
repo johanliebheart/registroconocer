@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body class="hold-transition sidebar-mini">
+
+	<header th:replace="layout/layout ::header"></header>
+	<aside th:replace="layout/layout ::aside"></aside>
+	<div class="content-wrapper">
+	   <section th:replace="layout/layout ::section1"></section>
+	
+		    <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Error 403</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+              <i class="fas fa-minus"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+              <i class="fas fa-times"></i></button>
+          </div>
+        </div>
+        <div class="card-body">
+          
+			<div class="card bg-danger text-white">
+				<div class="card-header">Error: Acceso Denegado!</div>
+				<div class="card-body">				  
+					<h5 class="card-title">Lo sentimos <span th:text="${#authentication.name}"></span>, NO tienes permisos para acceder a este recurso.</h5>
+					<br>
+					<a th:href="@{/inicio}" class="btn btn-outline-light" role="button">Ir al inicio</a>
+				</div>
+			</div>
+
+
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+          Footer
+        </div>
+        <!-- /.card-footer-->
+      </div>
+      <!-- /.card -->
+
+    </section>
+	
+	
+	</div>
+	<footer th:replace="layout/layout ::footer"></footer>
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+<section th:replace="layout/layout ::section2"></section>
+</body>
+</html>

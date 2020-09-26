@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security/">
+<head th:fragment="head">
+<meta charset="UTF-8" />
+<title
+	th:text="'Spring Boot: MVC + Thymeleaf + Data JPA - ' + ${titulo}"></title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" th:href="@{/dist/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/dist/css/jquery-ui.min.css}" />
+</head>
+<body>
+
+	<h1 align="center">
+		Llenado de ficha de registro <span class="badge badge-secondary">IT OK CENTER</span>
+	</h1>
+
+	<section class="content" >
+		<div class="container py-4" align="center">
+			<!-- left column -->
+			<div class="col-md-8">
+				<!-- general form elements -->
+				<div class="card card-primary">
+					<div class="card-header">
+						<h3 class="card-title">Llene los siguientes campos</h3>
+					</div>
+					<!-- /.card-header -->
+					<!-- form start -->
+					<form th:action="@{/operaciones/registraFicha}"
+						th:object="${fichaRegistro}" method="post"
+						enctype="multipart/form-data">
+						<div class="card-body">
+
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label>Fecha de Registro</label>
+									<div class="input-group-prepend">
+										<span class="input-group-text"><i
+											class="far fa-calendar-alt"></i></span> <input type="date"
+											class="form-control" th:field="*{fechaRegistro}"
+											th:errorclass="'form-control alert-danger'"> <small
+											class="form-text text-danger"
+											th:if="${#fields.hasErrors('fechaRegistro')}"
+											th:errors="*{fechaRegistro}"></small>
+									</div>
+								</div>
+							</div>
+
+
+							<!-- Seleccionar evaluador independiente -->
+
+							<div class="form-group">
+								<label>Selecciona el Evaluador Independiente</label> <select
+									th:field="*{idEvaluadorIndependiente}"
+									class="form-control select2" style="width: 100%;">
+									<option th:each="variable : ${listaEI}"
+										th:text="${variable.nombre}"
+										th:value="${variable.idEvaluadorIndependiente}"></option>
+								</select>
+							</div>
+
+
+							<div class="form-group">
+								<label>Selecciona el estandar de competencias</label> <select
+									th:field="*{idClaveEstandar}" class="form-control select2"
+									style="width: 100%;">
+									<option th:each="variable : ${listaEstandar}"
+										th:text="${variable.clave} +' - ' +${variable.nombre}"
+										th:value="${variable.idClaveEstandar}"></option>
+								</select>
+							</div>
+
+							<!-- 
+								<div class="form-group" hidden="">
+									<label for="buscar_evaluador">Evaluador Independiente</label> <input
+										type="text" name="buscar_evaluador" id="buscar_evaluador"
+										class="form-control" >
+								</div>
+								 -->
+
+							<div class="row">
+								<div class="col-sm-4">
+									<div class="form-group">
+										<label>Nombre(s)</label>
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="fas fa-user"></i></span>
+											<input type="text" th:field="*{candidato.nombre}"
+												class="form-control"
+												th:errorclass="'form-control alert-danger'"
+												placeholder="Nombres(s)" onkeyup="mayus(this);"
+												required="required"> <small
+												class="form-text text-danger"
+												th:if="${#fields.hasErrors('candidato.nombre')}"
+												th:errors="*{candidato.nombre}"></small>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-4">
+									<div class="form-group">
+										<label>Apellido Paterno</label>
+										<div class="input-group-prepend">
+											<input type="text" class="form-control"
+												th:field="*{candidato.apellidoP}"
+												th:errorclass="'form-control alert-danger'"
+												placeholder="Apellido Paterno" onkeyup="mayus(this);"
+												required="required"><small
+												class="form-text text-danger"
+												th:if="${#fields.hasErrors('candidato.apellidoP')}"
+												th:errors="*{candidato.apellidoP}"></small>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-4">
+									<div class="form-group ">
+										<label>Apellido Materno</label>
+										<div class="input-group-prepend">
+											<input type="text" class="form-control"
+												th:field="*{candidato.apellidoM}"
+												th:errorclass="'form-control alert-danger'"
+												placeholder="Apellido Materno" onkeyup="mayus(this);"><small
+												class="form-text text-danger"
+												th:if="${#fields.hasErrors('candidato.apellidoM')}"
+												th:errors="*{candidato.apellidoM}"></small>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label>Lugar de Nacimiento</label>
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i
+												class="fas fa-globe-americas"></i></span> <input type="text"
+												class="form-control" th:field="*{candidato.lugarNacimiento}"
+												th:errorclass="'form-control alert-danger'"
+												placeholder="Lugar de nacimiento" onkeyup="mayus(this);"
+												required="required">
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label>Nacionalidad</label>
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="fas fa-globe"></i></span>
+											<input type="text" class="form-control"
+												th:field="*{candidato.nacionalidad}"
+												th:errorclass="'form-control alert-danger'"
+												placeholder="Nacionalidad" onkeyup="mayus(this);"
+												required="required">
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label>Email </label>
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i
+												class="fas fa-envelope"></i></span> <input type="email"
+												class="form-control" th:field="*{candidato.email}"
+												th:errorclass="'form-control alert-danger'"
+												placeholder="E-mail">
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label>CURP</label>
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i
+												class="fas fa-user-tag"></i></span> <input type="text"
+												class="form-control" th:field="*{candidato.curp}"
+												th:errorclass="'form-control alert-danger'"
+												placeholder="CURP" onkeyup="mayus(this);" maxlength="18"
+												required="required">
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label>Fecha de nacimiento</label>
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i
+												class="far fa-calendar-alt"></i></span> <input required="required"
+												type="date" class="form-control"
+												th:field="*{candidato.fechaNacimiento}"
+												th:errorclass="'form-control alert-danger'"> <small
+												class="form-text text-danger"
+												th:if="${#fields.hasErrors('candidato.fechaNacimiento')}"
+												th:errors="*{candidato.fechaNacimiento}"></small>
+										</div>
+									</div>
+								</div>
+
+
+								<!-- radio -->
+								<div class="col-sm-6">
+									<div class="form-group" required="required">
+										<label>Género</label>
+										<div class="form-check">
+
+											<input class="form-check-input" type="radio"
+												th:field="*{candidato.genero}" th:value="'Femenino'"
+												checked="checked"> <label class="form-check-label">Femenino</label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="radio"
+												th:field="*{candidato.genero}" th:value="'Masculino'">
+											<label class="form-check-label">Masculino</label>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="col-sm-12">
+									<div class="form-group">
+										<label>Domicilio completo</label>
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="fas fa-home"></i></span>
+											<input type="text" class="form-control"
+												th:field="*{candidato.domicilio}" placeholder="Dirección"
+												onkeyup="mayus(this);" required="required">
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label>Teléfono</label>
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i class="fas fa-phone"></i></span>
+											<input type="text" class="form-control"
+												th:field="*{candidato.telefono}" placeholder="Teléfono">
+										</div>
+									</div>
+								</div>
+
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label>Celular</label>
+										<div class="input-group-prepend">
+											<span class="input-group-text"><i
+												class="fas fa-mobile-alt"></i></span> <input type="text"
+												class="form-control" th:field="*{candidato.telefonoCel}"
+												placeholder="Celular">
+										</div>
+									</div>
+								</div>
+								<!-- radio -->
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label>Autorización RENAP</label>
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="radio2"
+												checked th:field="*{aceptacion}" th:value="1"> <label
+												class="form-check-label">Acepto</label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="radio2"
+												th:field="*{aceptacion}" th:value="0"> <label
+												class="form-check-label">No acepto</label>
+										</div>
+									</div>
+								</div>
+								<!-- radio -->
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label>Estado</label>
+										<div class="form-check">
+											<input class="form-check-input" type="radio"
+												th:field="*{estado}" th:value="'Primera Vez'"
+												checked="checked"> <label class="form-check-label">Primera
+												Vez</label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="radio"
+												th:field="*{estado}" th:value="'RenovaciÃ³n'"> <label
+												class="form-check-label">Renovación</label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="radio"
+												th:field="*{estado}" th:value="'Nuevo intento'"> <label
+												class="form-check-label">Nuevo intento</label>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+
+							<div class="form-group row">
+								<label for="file">Subir foto</label>
+								<div class="input-group">
+									<div class="custom-file">
+										<input type="file" name="file" class="form-control" />
+
+									</div>
+								</div>
+							</div>
+
+
+
+						</div>
+						<!-- /.card-body -->
+
+						<div class="card-footer">
+							<button type="submit" class="btn btn-primary float-right">Enviar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- jQueryUI -->
+<script src="../../dist/js/jquery-ui.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</html>
