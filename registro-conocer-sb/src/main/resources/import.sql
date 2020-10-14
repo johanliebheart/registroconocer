@@ -1,4 +1,4 @@
-/* example table */
+	/* example table */
 INSERT INTO usuario (id_usuario, password, tipo_de_usuario, estado) VALUES(1, '12345', 1, 1);
 INSERT INTO usuario (id_usuario, password, tipo_de_usuario, estado) VALUES(2, '56478', 2, 1);
 INSERT INTO usuario (id_usuario, password, tipo_de_usuario, estado) VALUES(3, '91011', 3, 1);

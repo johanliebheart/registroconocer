@@ -19,7 +19,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-
+/*
 		http.authorizeRequests().antMatchers("/public/**","/css/**","/img/**","/plugins/**","/dist/**").permitAll()
 		.antMatchers("/inicio/**").hasAnyRole("USER")
 		.antMatchers("/operaciones/**").hasAnyRole("ADMIN")
@@ -39,21 +39,21 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		.permitAll()
 		.and()
 		.logout().permitAll()
-		.and().exceptionHandling().accessDeniedPage("/error/error_403");
+		.and().exceptionHandling().accessDeniedPage("/error/error_403");*/
 	}
 
 
 	@Autowired 
 	public void configurerGlobal(AuthenticationManagerBuilder builder) throws Exception {
 		
-		PasswordEncoder encoder = passwordEncoder();
+		/*PasswordEncoder encoder = passwordEncoder();
 		
 		UserBuilder users = User.builder().passwordEncoder(encoder::encode);
 		
 		builder.inMemoryAuthentication()
 		.withUser(users.username("admin").password("12345").roles("ADMIN","USER"))
 		.withUser(users.username("hector").password("12345").roles("USER"));
-		
+		*/
 	}
 	
 }

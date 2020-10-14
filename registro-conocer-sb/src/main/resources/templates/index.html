@@ -22,13 +22,10 @@
 										<b>Avisos del administrador</b>
 									</h5>
 
-									<p class="card-text">Lorem Ipsum is simply dummy text of
-										the printing and typesetting industry. Lorem Ipsum has been
-										the industry's standard dummy text ever since the 1500s, when
-										an unknown printer took a galley of type and scrambled it to
-										make a type specimen book.</p>
-									<a href="#" class="card-link">Card link</a> <a href="#"
-										class="card-link">Another link</a>
+									<p class="card-text">Actualización del sistema interno del conocer, con nueva funcionalidad para añadir
+									lotes de dictamen así como reportes detallados.</p>
+									<a href="mailto:<coor.sistemas@it-okcenter.com>" class="card-link">Enviar comentarios</a> <a href="#"
+										class="card-link" hidden="true">Another link</a>
 								</div>
 							</div>
 							<!-- /.card -->
@@ -69,14 +66,14 @@
 						<!-- small box -->
 						<div class="small-box bg-info">
 							<div class="inner">
-								<h3>150</h3>
+								<h3 th:text="${fichas}"></h3>
 
 								<p>Nuevas Fichas</p>
 							</div>
 							<div class="icon">
 								<i class="ion ion-bag"></i>
 							</div>
-							<a href="#" class="small-box-footer">More info <i
+							<a href="reportes/reporteFichas" class="small-box-footer">More info <i
 								class="fas fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
@@ -85,8 +82,8 @@
 						<!-- small box -->
 						<div class="small-box bg-success">
 							<div class="inner">
-								<h3>
-									53<sup style="font-size: 20px">%</sup>
+								<h3 th:text="${procesos}">
+									<sup style="font-size: 20px">%</sup>
 								</h3>
 
 								<p>Procesos concluidos</p>
@@ -94,7 +91,7 @@
 							<div class="icon">
 								<i class="ion ion-stats-bars"></i>
 							</div>
-							<a href="#" class="small-box-footer">More info <i
+							<a href="reportes/reporteProcesos" class="small-box-footer">More info <i
 								class="fas fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
@@ -103,14 +100,14 @@
 						<!-- small box -->
 						<div class="small-box bg-warning">
 							<div class="inner">
-								<h3>44</h3>
+								<h3 th:text="${candidatos}"></h3>
 
 								<p>Candidatos Registrados</p>
 							</div>
 							<div class="icon">
 								<i class="ion ion-person-add"></i>
 							</div>
-							<a href="#" class="small-box-footer">More info <i
+							<a href="reportes/reporteFichas" class="small-box-footer">More info <i
 								class="fas fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
@@ -119,14 +116,14 @@
 						<!-- small box -->
 						<div class="small-box bg-danger">
 							<div class="inner">
-								<h3>65</h3>
+								<h3 th:text="${evaluadores}">65</h3>
 
 								<p>Evaluadores Registrados</p>
 							</div>
 							<div class="icon">
 								<i class="ion ion-pie-graph"></i>
 							</div>
-							<a href="#" class="small-box-footer">More info <i
+							<a href="reportes/reporteEvaluadores" class="small-box-footer">More info <i
 								class="fas fa-arrow-circle-right"></i></a>
 						</div>
 					</div>

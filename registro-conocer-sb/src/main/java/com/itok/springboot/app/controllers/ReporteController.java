@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.itok.springboot.app.models.service.ICertificadoService;
+import com.itok.springboot.app.models.service.IEstandarService;
 import com.itok.springboot.app.models.service.IEvaluadorIndependienteService;
 import com.itok.springboot.app.models.service.IFichaRegistroService;
 import com.itok.springboot.app.models.service.ILoteDictamenService;
@@ -25,6 +26,8 @@ public class ReporteController {
 	private ILoteDictamenService loteDictamenService;
 	@Autowired
 	private ICertificadoService certificadosService;
+	@Autowired
+	private IEstandarService estandarService;
 
 
 	@GetMapping(value = "/reporteFichas") 
@@ -76,5 +79,11 @@ public class ReporteController {
 		return "reportes/reporteEmisiones";
 	}
 	
+	@GetMapping("/reporteEstandar")
+	public String reporteEstandar(Model model) {
+		model.addAttribute("titulo", "Reporte de estandares");
+		model.addAttribute("listaEstandar", estandarService.findAll());
+		return "reportes/reporteEstandar";
+	}
 	
 }
