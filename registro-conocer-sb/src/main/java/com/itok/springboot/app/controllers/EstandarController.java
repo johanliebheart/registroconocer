@@ -6,13 +6,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itok.springboot.app.models.entity.Estandar;
 import com.itok.springboot.app.models.service.IEstandarService;
 
 @Controller
-@RequestMapping(value = "/estandar")
+@RequestMapping("/estandar")
+@SessionAttributes("estandar")
 public class EstandarController {
 
 	@Autowired
@@ -32,8 +34,7 @@ public class EstandarController {
 		estandarService.save(estandar);
 		flash.addFlashAttribute("success", "Estandar registrado exitosamente");
 		model.addAttribute("titulo", "Reporte de estandares");
-		return "redirect:/reportes/reporteEstandar";
-		
+		return "redirect:/reportes/reporteEstandares";
 	}
 	
 	

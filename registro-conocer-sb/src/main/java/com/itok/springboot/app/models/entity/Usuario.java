@@ -1,92 +1,79 @@
 package com.itok.springboot.app.models.entity;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="usuario")
-public class Usuario  implements Serializable{
+@Table(name = "usuario")
+public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idUsuario;
-	
-	
-	private String password;
-	
-	private String nombre;
-	
-	private int tipoDeUsuario;
-	
-	
-	private int estado;
 
+	@Column(unique = true, length = 30)
+	private String username;
+	@Column(length = 60)
+	private String password;
+
+	private boolean enabled;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id") // nombre de la llave foranea
+	private List<Role> roles;
 
 	public int getIdUsuario() {
 		return idUsuario;
 	}
 
-
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 	public String getPassword() {
 		return password;
 	}
 
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-
-	public int getTipoDeUsuario() {
-		return tipoDeUsuario;
+	public boolean isEnabled() {
+		return enabled;
 	}
 
-
-	public void setTipoDeUsuario(int tipoDeUsuario) {
-		this.tipoDeUsuario = tipoDeUsuario;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
-
-	public int getEstado() {
-		return estado;
+	public List<Role> getRoles() {
+		return roles;
 	}
 
-
-	public void setEstado(int estado) {
-		this.estado = estado;
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
-
-
-	public String getNombre() {
-		return nombre;
-	}
-
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Usuario [idUsuario=" + idUsuario + ", password=" + password + ", nombre=" + nombre + ", tipoDeUsuario="
-				+ tipoDeUsuario + ", estado=" + estado + "]";
-	}
-
 
 	
 
-	
 }

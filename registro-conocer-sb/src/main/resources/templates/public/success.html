@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security/">
+<head th:fragment="head">
+<meta charset="UTF-8" />
+<title
+	th:text="'Spring Boot: MVC + Thymeleaf + Data JPA - ' + ${titulo}"></title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" th:href="@{/dist/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/dist/css/jquery-ui.min.css}" />
+</head>
+<body>
+
+
+	
+	<div class="content-wrapper">
+	   
+	
+		    <section class="content">
+		
+	
+        
+        
+        <div class="card-body">
+        
+         	<div class="container py-4">
+         	         		
+         		<div class="card bg-light">
+			<div class="card-header" th:text="'Detalles'"></div>
+			<div class="card-body">
+
+
+				<img th:if="${#strings.length(fichaRegistro.candidato.imageReference) > 0}"
+					class="img-thumbnail rounded float-left" style="max-width: 25%;"
+					th:src="@{'/uploads/' + ${fichaRegistro.candidato.imageReference}}" th:alt="${fichaRegistro.candidato.imageReference}">
+
+				<ul  class="list-group list-group-flush" >
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.nombre} +' '+${fichaRegistro.candidato.apellidoP}+' '+ ${fichaRegistro.candidato.apellidoM}"></li>					
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.nacionalidad}"></li>
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.lugarNacimiento}"></li>
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.email}"></li>
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.genero}"></li>
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.curp}"></li>
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.fechaNacimiento}"></li>
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.domicilio}"></li>
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.telefono}"></li>
+					<li class="list-group-item list-group-item-action" th:text="${fichaRegistro.candidato.telefonoCel}"></li>
+					
+				</ul>
+
+				
+         		<h4 >
+					
+					<a th:href="@{/public/imprimir/} + ${fichaRegistro.idFichaRegistro}"  target="_blank" class="btn btn-success ">Imprimir</a>
+				</h4>
+			
+					
+			
+         	</div>
+         
+         	
+         	
+         	</div>
+         	
+         	
+         	</div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+          
+        </div>
+        <!-- /.card-footer-->
+   
+      <!-- /.card -->
+
+    </section>
+	
+	
+	</div>
+	
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+		<!-- Control sidebar content goes here -->
+	</aside>
+
+</body>
+</html>

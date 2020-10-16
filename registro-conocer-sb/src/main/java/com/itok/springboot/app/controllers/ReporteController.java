@@ -79,7 +79,7 @@ public class ReporteController {
 		return "reportes/reporteEmisiones";
 	}
 	
-	@GetMapping("/reporteEstandar")
+	@GetMapping("/reporteEstandares")
 	public String reporteEstandar(Model model) {
 		model.addAttribute("titulo", "Reporte de estandares");
 		model.addAttribute("listaEstandar", estandarService.findAll());

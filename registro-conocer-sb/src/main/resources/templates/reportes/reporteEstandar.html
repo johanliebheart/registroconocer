@@ -32,35 +32,24 @@
 					<table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Id</th>
+								<th>Clave</th>
 								<th>Nombre</th>
-								<th>Estado</th>
-								<th>Fecha de alta</th>
-								<th>No de evaluadores</th>
-								<th>Agregar Estandar</th>
+								<th>Vigencia</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="var: ${listaEvaluadores}">
-								
-								<td><a class="btn btn-primary" th:href="@{/evaluadores/altaEvaluador/}+ ${var.idEvaluadorIndependiente} " th:text="${var.idEvaluadorIndependiente}"></a></td>
-								<td th:text="${var.nombre}"></td>
-								<td th:text="${var.estado} ? 'Activo':'Inactivo'"></td>
-								<td th:text="${var.fechaAlta}"></td>
-								<td th:text="${var.noEvaluadores}"></td>
-								<td><a class="btn btn-success" th:href="@{/evaluadores/agregarEstandar/} + ${var.idEvaluadorIndependiente} " th:text="Agregar">
-									</a></td>
+							<tr th:each="var: ${listaEstandar}">
+								<td th:text="${var.clave}"></td>
+								<td th:text="${var.nombre} "></td>
+								<td th:text="${var.vigencia}"></td>
 							</tr>
 
 						</tbody>
 						<tfoot>
 							<tr>
-								<th>Id</th>
+								<th>Clave</th>
 								<th>Nombre</th>
-								<th>Estado</th>
-								<th>Fecha de alta</th>
-								<th>No de evaluadores</th>
-								<th>Agregar Estandar</th>
+								<th>Vigencia</th>
 							</tr>
 						</tfoot>
 					</table>
