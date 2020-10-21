@@ -24,7 +24,7 @@ public class EmisionController {
 	public String listadoEmision(Model model) {
 		model.addAttribute("titulo", "Lista de emisiones para impresión");
 		model.addAttribute("listaCertificados", certificadoService.findByEmision());
-		return "/emision/listadoEmision";
+		return "emision/listadoEmision";
 	}
 
 	

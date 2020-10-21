@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.itok.springboot.web.regconocer.app</groupId>
 	<artifactId>registro-conocer-sb</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<name>registro-conocer-sb</name>
 	<description>Demo project for Spring Boot</description>
 

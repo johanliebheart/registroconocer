@@ -25,7 +25,7 @@ public class EstandarController {
 		Estandar estandar= new Estandar();
 		model.addAttribute("estandar", estandar);
 		model.addAttribute("titulo", "Nuevo Estandar");
-		return "/estandar/nuevo";
+		return "estandar/nuevo";
 	}
 	
 	@PostMapping(value="registrar")

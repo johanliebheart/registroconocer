@@ -27,7 +27,7 @@ public class LoteController {
 	public String loteDictamen(Model model) {
 		model.addAttribute("listaLotes", loteDictamenService.findAll());
 		model.addAttribute("titulo", "Administración de lotes de dictamen");
-		return"/lote/loteDictamen";
+		return"lote/loteDictamen";
 	}
 	
 	@GetMapping("/nuevoLote")
@@ -37,7 +37,7 @@ public class LoteController {
 		model.addAttribute("loteDictamen", loteDictamen);
 		model.addAttribute("titulo", "Nuevo lote de dictamen");
 		
-		return "/lote/nuevoLote";
+		return "lote/nuevoLote";
 	}
 
 	@PostMapping("/guardarLote")	
@@ -46,7 +46,7 @@ public class LoteController {
 		if(result.hasErrors()) {
 			model.addAttribute("loteDictamen", loteDictamen);
 			model.addAttribute("titulo","Nuevo lote de dictamen");
-			return "/lote/nuevoLote";
+			return "lote/nuevoLote";
 		}
 		String mensajeFlash=(loteDictamen.getFechaCapturada() != null) ? "Lote editado con éxito" : "Lote creado con éxito";
 		loteDictamen.setContador(loteDictamen.getNumeroFichas());
@@ -95,7 +95,7 @@ public class LoteController {
 		model.addAttribute("loteDictamen", loteDictamen);
 		model.addAttribute("titulo", "Editar lote de dictamen");
 		model.addAttribute("estado", estado);
-		return "/lote/nuevoLote";
+		return "lote/nuevoLote";
 	}
 	
 	

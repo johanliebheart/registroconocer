@@ -27,7 +27,7 @@ public class FinanzasController {
 	public String listaCert(Model model) {
 		model.addAttribute("titulo", "Lista de folios de certificado");
 		model.addAttribute("listaCertificados", certificadoCervice.findByActivo());
-		return "/finanzas/notificacionPagos";
+		return "finanzas/notificacionPagos";
 	}
 		
 	@GetMapping("asignarPago/{id}")
@@ -46,7 +46,7 @@ public class FinanzasController {
 		}
 		model.addAttribute("titulo", "Asignar nuevo pago");
 		model.addAttribute("certificado", certificado);
-		return "/finanzas/nuevoPago";
+		return "finanzas/nuevoPago";
 	}
 	
 	@PostMapping(value="/registrarPago")
@@ -65,7 +65,7 @@ public class FinanzasController {
 	public String reexpedicion(Model model) {
 		model.addAttribute("titulo","Módulo de reexpedición de emisiones");
 		model.addAttribute("listaCertificados", certificadoCervice.findByTerminado());
-		return "/finanzas/reexpedicion";
+		return "finanzas/reexpedicion";
 	}
 	
 	
