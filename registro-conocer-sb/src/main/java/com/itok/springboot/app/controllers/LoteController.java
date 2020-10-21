@@ -74,7 +74,7 @@ public class LoteController {
 		model.addAttribute("loteDictamen", loteDictamen);
 		model.addAttribute("titulo", "Editar lote de dictamen");
 		model.addAttribute("estado", estado);
-		return "/lote/nuevoLote";
+		return "lote/nuevoLote";
 	}
 	
 	@GetMapping(value="/asignarEstado/{id}")

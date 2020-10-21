@@ -96,7 +96,7 @@ public class ProcesoController {
 		model.addAttribute("proceso", proceso);
 		model.addAttribute("titulo", "Asignar juicio");
 
-		return "/procesos/asignar";
+		return "procesos/asignar";
 	}
 
 	/*
@@ -140,7 +140,7 @@ public class ProcesoController {
 		model.addAttribute("titulo", "Lote de dictamen");
 		model.addAttribute("listaLotes", loteDictamenService.findByProcedente());
 		System.out.println("se va a editar un juicio");
-		return "/procesos/asignarLote";
+		return "procesos/asignarLote";
 	}
 
 	/*

@@ -65,7 +65,7 @@ public class AccesController {
 			return "redirect:/";	
 	}
 	*/
-	@GetMapping(value="{inicio,index}") 
+	@GetMapping(path = {"inicio", "index","/"})
 	public String inicio(Model model) {
 		System.out.println("numero de fichas: " + fichaRegistro.findAll().size());
 		model.addAttribute("fichas", fichaRegistro.findAll().size());
