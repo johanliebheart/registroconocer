@@ -22,7 +22,7 @@
 						</div>
 						<!-- /.card-header -->
 						<!-- form start -->
-						<form th:action="@{/evaluadores/guardarEvaluador}" th:object="${usuario}" method="post" >
+						<form th:action="@{/usuario/registrarUsuario}" th:object="${usuario}" method="post" >
 							<div class="card-body">
 
 
@@ -32,8 +32,8 @@
 											<label>Nombre de usuario</label>
 											<div class="input-group-prepend">
 												
-												<input type="text" class="form-control" th:field="*{nombre}"
-													placeholder="Nombres" onkeyup="mayus(this);"
+												<input type="text" class="form-control" th:field="*{username}"
+													placeholder="Nombres" 
 													required="required">
 											</div>
 										</div>
@@ -44,8 +44,8 @@
 											<label>Password</label>
 											<div class="input-group-prepend">
 												
-												<input type="text" class="form-control" th:field="*{nombre}"
-													placeholder="Nombres" onkeyup="mayus(this);"
+												<input type="password" class="form-control" th:field="*{password}"
+													placeholder="Password" 
 													required="required">
 											</div>
 										</div>
@@ -58,19 +58,37 @@
 											<div class="form-check">
 
 												<input class="form-check-input" type="radio"
-													th:field="*{estado}" th:value="'1'">
+													th:field="*{temp}" th:value="'0'">
 												<label class="form-check-label">Administrador</label>
 											</div>
 											<div class="form-check">
 												<input class="form-check-input" type="radio"
-													th:field="*{estado}" th:value="'0'">
+													th:field="*{temp}" th:value="'1'">
 												<label class="form-check-label">Editor</label>
 											</div>
 											<div class="form-check">
 												<input class="form-check-input" type="radio"
-													th:field="*{estado}" th:value="'0'">
+													th:field="*{temp}" th:value="'2'">
 												<label class="form-check-label">Diseño</label>
 											</div>
+										</div>
+									</div>	
+									
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label>Estado</label>
+											<div class="form-check">
+
+												<input class="form-check-input" type="radio"
+													th:field="*{enabled}" th:value="'1'" checked="checked">
+												<label class="form-check-label">Activo</label>
+											</div>
+											<div class="form-check">
+												<input class="form-check-input" type="radio"
+													th:field="*{enabled}" th:value="'0'">
+												<label class="form-check-label">Inactivo</label>
+											</div>
+											
 										</div>
 									</div>	
 								</div>

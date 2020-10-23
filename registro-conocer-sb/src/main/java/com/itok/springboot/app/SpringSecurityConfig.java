@@ -3,14 +3,18 @@ package com.itok.springboot.app;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.itok.springboot.app.models.service.JpaUserDetailsService;
+
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	
+	@Autowired
+	private com.itok.springboot.app.auth.handler.LoginSuccesHandler succesHandler;
 	@Autowired
 	private JpaUserDetailsService userDetailsService;
 	
@@ -22,22 +26,25 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests().antMatchers("/public/**","/css/**","/img/**","/plugins/**","/dist/**","/uploads/**").permitAll()
 				
-				  .antMatchers("/estandar/**").hasAnyRole("ADMIN")
-				  .antMatchers("/inicio/**").hasAnyRole("USER")
-				  .antMatchers("/operaciones/**").hasAnyRole("ADMIN")
-				  .antMatchers("/emision/**").hasAnyRole("USER")
-				  .antMatchers("/reportes/**").hasAnyRole("USER")
-				  .antMatchers("/reportes/**").hasAnyRole("USER")
-				  .antMatchers("/operaciones/**").hasAnyRole("ADMIN")
-				  .antMatchers("/procesos/**").hasAnyRole("ADMIN")
-				  .antMatchers("/finanzas/**").hasAnyRole("ADMIN")
-				  .antMatchers("/lote/**").hasAnyRole("ADMIN")
-				  .antMatchers("/evaluadores/**").hasAnyRole("ADMIN")
-				  .antMatchers("/certificados/**").hasAnyRole("ADMIN")
+				/*
+				 * .antMatchers("/estandar/**").hasAnyRole("ADMIN")
+				 * .antMatchers("/inicio/**").hasAnyRole("USER")
+				 * .antMatchers("/operaciones/**").hasAnyRole("ADMIN")
+				 * .antMatchers("/emision/**").hasAnyRole("USER")
+				 * .antMatchers("/reportes/**").hasAnyRole("USER")
+				 * .antMatchers("/reportes/**").hasAnyRole("USER")
+				 * .antMatchers("/operaciones/**").hasAnyRole("ADMIN")
+				 * .antMatchers("/procesos/**").hasAnyRole("ADMIN")
+				 * .antMatchers("/finanzas/**").hasAnyRole("ADMIN")
+				 * .antMatchers("/lote/**").hasAnyRole("ADMIN")
+				 * .antMatchers("/evaluadores/**").hasAnyRole("ADMIN")
+				 * .antMatchers("/certificados/**").hasAnyRole("ADMIN")
+				 */
 				 
 		.anyRequest().authenticated()
-		.and()
-		.formLogin().loginPage("/login")
+		.and().formLogin()
+		.successHandler(succesHandler)
+		.loginPage("/login")
 		.permitAll()
 		.and()
 		.logout().permitAll()

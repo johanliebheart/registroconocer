@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "usuario")
@@ -29,6 +30,9 @@ public class Usuario implements Serializable {
 	private String password;
 
 	private boolean enabled;
+	
+	@Transient
+	private int temp;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id") // nombre de la llave foranea
@@ -73,6 +77,22 @@ public class Usuario implements Serializable {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
+
+	public int getTemp() {
+		return temp;
+	}
+
+	public void setTemp(int temp) {
+		this.temp = temp;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [idUsuario=" + idUsuario + ", username=" + username + ", password=" + password + ", enabled="
+				+ enabled + ", temp=" + temp + ", roles=" + roles + "]";
+	}
+
+	
 
 	
 

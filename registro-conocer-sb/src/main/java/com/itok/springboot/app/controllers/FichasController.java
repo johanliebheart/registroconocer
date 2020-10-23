@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,7 +26,7 @@ import com.itok.springboot.app.models.service.IEstandarService;
 import com.itok.springboot.app.models.service.IEvaluadorIndependienteService;
 import com.itok.springboot.app.models.service.IUploadFileService;
 import com.itok.springboot.app.models.service.IFichaRegistroService;
-
+@Secured({"ROLE_EDITOR","ROLE_ADMIN"})
 @Controller
 @SessionAttributes("fichaRegistro")
 @RequestMapping("/operaciones")
@@ -42,6 +43,7 @@ public class FichasController {
 	@Autowired
 	private IUploadFileService uploadFileService;
 
+	
 	@GetMapping("/fichaRegistro")
 	public String fichaRegistro(Model model) {
 		System.out.println("entrando al controller registro de ficha");

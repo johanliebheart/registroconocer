@@ -47,7 +47,7 @@ public class CertificadoController {
 			certificado.setIdProceso(proceso);
 			model.addAttribute("certificado", certificado);
 			model.addAttribute("titulo", "Añadir folio de certificado");
-			return "/certificados/nuevoCertificado";
+			return "certificados/nuevoCertificado";
 		}else 
 			flash.addFlashAttribute("error", "El ID de la ficha no puede ser cero!");
 			return "redirect:/certificados/listaCompetentes";

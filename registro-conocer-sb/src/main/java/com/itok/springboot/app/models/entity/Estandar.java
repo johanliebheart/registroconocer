@@ -2,7 +2,6 @@ package com.itok.springboot.app.models.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,14 +16,15 @@ public class Estandar implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_clave_estandar")
 	private int idClaveEstandar;
 	
 	private String nombre;
 	
 	private String clave;
 	
-	private int vigencia =365;
+	private int vigencia;
+	
+	private Boolean tipo;// 0 local 1 online
 
 	public int getIdClaveEstandar() {
 		return idClaveEstandar;
@@ -50,7 +50,6 @@ public class Estandar implements Serializable {
 		this.clave = clave;
 	}
 
-	
 	public int getVigencia() {
 		return vigencia;
 	}
@@ -59,12 +58,15 @@ public class Estandar implements Serializable {
 		this.vigencia = vigencia;
 	}
 
-	@Override
-	public String toString() {
-		return "Estandar [idClaveEstandar=" + idClaveEstandar + ", nombre=" + nombre + ", clave=" + clave
-				+ ", vigencia=" + vigencia + "]";
+	public Boolean getTipo() {
+		return tipo;
 	}
 
+	public void setTipo(Boolean tipo) {
+		this.tipo = tipo;
+	}
+
+	
 	
 
 }
