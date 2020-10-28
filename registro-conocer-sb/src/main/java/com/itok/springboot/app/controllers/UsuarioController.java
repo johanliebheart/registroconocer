@@ -26,16 +26,7 @@ public class UsuarioController {
 	private BCryptPasswordEncoder passwordEncoder;
 	@Autowired
 	private IUsuarioDao usuarioDao;
-	/*@Autowired
-	
-	
-	@GetMapping("listar")
-	public String listar (Model model) {
-		model.addAttribute("titulo", "Listado de Usuarios");
-		model.addAttribute("usuarios", usuarioService.findAll());
-		return "listar"; 
-	}
-*/
+
 	@GetMapping(value="/nuevoUsuario")
 	public String nuevoUsuario(Model model) {
 		System.out.println("entrando a nuevo usuario");
@@ -92,7 +83,7 @@ public class UsuarioController {
 			
 		
 		status.setComplete();
-		flash.addFlashAttribute("success", "Usuario registrado con éxito");
+		flash.addFlashAttribute("success",mensajeFlash);
 		return "redirect:/usuario/nuevoUsuario";
 	}
 	

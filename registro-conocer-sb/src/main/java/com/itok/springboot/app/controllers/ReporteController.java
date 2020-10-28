@@ -1,6 +1,7 @@
 package com.itok.springboot.app.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,7 @@ import com.itok.springboot.app.models.service.IEvaluadorIndependienteService;
 import com.itok.springboot.app.models.service.IFichaRegistroService;
 import com.itok.springboot.app.models.service.ILoteDictamenService;
 import com.itok.springboot.app.models.service.IProcesoService;
-
+@Secured({"ROLE_EDITOR","ROLE_ADMIN","ROLE_USER"})
 @Controller
 @RequestMapping("/reportes")
 public class ReporteController {

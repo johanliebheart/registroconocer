@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.itok.springboot.app.models.dao.IProcesoDao;
 import com.itok.springboot.app.models.service.ICandidatoService;
 import com.itok.springboot.app.models.service.IEvaluadorIndependienteService;
 import com.itok.springboot.app.models.service.IFichaRegistroService;
-import com.itok.springboot.app.models.service.IProcesoService;
 @Controller
 public class AccesController {
 	//@Autowired
@@ -20,7 +20,7 @@ public class AccesController {
 	@Autowired
 	private IFichaRegistroService fichaRegistro;
 	@Autowired
-	private IProcesoService procesoService;
+	private IProcesoDao procesoService;
 	@Autowired
 	private ICandidatoService candidatoService;
 	@Autowired
@@ -69,7 +69,7 @@ public class AccesController {
 	public String inicio(Model model) {
 		System.out.println("numero de fichas: " + fichaRegistro.findAll().size());
 		model.addAttribute("fichas", fichaRegistro.findAll().size());
-		model.addAttribute("procesos", procesoService.findAll().size());
+		model.addAttribute("procesos", procesoService.findByConcluido().size());
 		model.addAttribute("candidatos", candidatoService.findAll().size());
 		model.addAttribute("evaluadores", evaluadorService.findAll().size());
 		return "index";

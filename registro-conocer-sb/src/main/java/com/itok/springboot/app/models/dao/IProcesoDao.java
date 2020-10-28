@@ -14,4 +14,7 @@ public interface IProcesoDao extends PagingAndSortingRepository<Proceso, Integer
 	
 	@Query("select p from Proceso p where p.juicio = 'Competente' AND p.certificado=0")
 	public List<Proceso> findByCompetente();
+	
+	@Query("select p from Proceso p where p.juicio = 'Competente' AND p.certificado=1")
+	public List<Proceso> findByConcluido();
 }
