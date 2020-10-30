@@ -34,7 +34,7 @@ public class MvcConfig implements WebMvcConfigurer {
 	}
 	
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/error/error_403").setViewName("/error/error_403");;
+		registry.addViewController("/error/error_403").setViewName("error/error_403");;
 	}
 	
 	@Bean

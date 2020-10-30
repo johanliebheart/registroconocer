@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.itok.springboot.app.models.dao.IUsuarioDao;
 import com.itok.springboot.app.models.entity.Role;
 import com.itok.springboot.app.models.entity.Usuario;
-
+@Secured({"ROLE_ADMIN"})
 @Controller
 @SessionAttributes("usuario")
 @RequestMapping("/usuario")
@@ -63,8 +64,7 @@ public class UsuarioController {
 			System.out.println("llenando al editor");
 			rol2.setAuthority("ROLE_EDITOR");
 			role.add(rol2);
-			rol3.setAuthority("ROLE_USER");
-			role.add(rol3);
+			
 		}else if (usuario.getTemp()==2) {
 			System.out.println("llenando al usuario");
 			rol3.setAuthority("ROLE_USER");
@@ -72,8 +72,7 @@ public class UsuarioController {
 		
 		}
 		
-			usuario.setRoles(role);
-			
+			usuario.setRoles(role);		
 			System.out.println("lista de roles asignados: ");
 			Iterator<Role> iter = role.iterator();
 			while (iter.hasNext())

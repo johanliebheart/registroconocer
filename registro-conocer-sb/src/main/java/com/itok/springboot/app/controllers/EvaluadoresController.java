@@ -3,6 +3,7 @@ package com.itok.springboot.app.controllers;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,7 +20,7 @@ import com.itok.springboot.app.models.entity.EvaluadorIndependiente;
 import com.itok.springboot.app.models.service.IEstandarService;
 import com.itok.springboot.app.models.service.IEstandaresAutorizadosService;
 import com.itok.springboot.app.models.service.IEvaluadorIndependienteService;
-
+@Secured({"ROLE_ADMIN"})
 @Controller
 @RequestMapping(value = "/evaluadores")
 @SessionAttributes("evaluadorIndependiente")
